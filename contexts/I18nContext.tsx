@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-export type Locale = 'en' | 'ja' | 'ko' | 'zh';
+export type Locale = 'en' | 'ja';
 
 interface I18nContextType {
   locale: Locale;
@@ -17,6 +17,7 @@ const translations = {
     'nav.ranking': 'Ranking',
     'nav.messages': 'Messages',
     'nav.account': 'Account',
+    'nav.admin': 'Admin',
     'search.placeholder': 'Search creators...',
     'hero.title': 'Connect with Your Favorite Creators',
     'hero.subtitle': 'Discover exclusive content and support amazing creators',
@@ -34,6 +35,7 @@ const translations = {
     'nav.ranking': 'ランキング',
     'nav.messages': 'メッセージ',
     'nav.account': 'アカウント',
+    'nav.admin': '管理',
     'search.placeholder': 'クリエイターを検索...',
     'hero.title': 'お気に入りのクリエイターとつながろう',
     'hero.subtitle': '独占コンテンツを発見し、素晴らしいクリエイターをサポート',
@@ -44,40 +46,6 @@ const translations = {
     'messages.title': 'メッセージ',
     'account.profile': 'プロフィール',
     'account.settings': '設定',
-  },
-  ko: {
-    'nav.home': '홈',
-    'nav.feed': '피드',
-    'nav.ranking': '랭킹',
-    'nav.messages': '메시지',
-    'nav.account': '계정',
-    'search.placeholder': '크리에이터 검색...',
-    'hero.title': '좋아하는 크리에이터와 연결하세요',
-    'hero.subtitle': '독점 콘텐츠를 발견하고 놀라운 크리에이터를 지원하세요',
-    'creator.followers': '팔로워',
-    'creator.posts': '게시물',
-    'creator.subscribe': '구독',
-    'ranking.title': '톱 크리에이터',
-    'messages.title': '메시지',
-    'account.profile': '프로필',
-    'account.settings': '설정',
-  },
-  zh: {
-    'nav.home': '首页',
-    'nav.feed': '动态',
-    'nav.ranking': '排行榜',
-    'nav.messages': '消息',
-    'nav.account': '账户',
-    'search.placeholder': '搜索创作者...',
-    'hero.title': '与您喜爱的创作者联系',
-    'hero.subtitle': '发现独家内容并支持优秀创作者',
-    'creator.followers': '粉丝',
-    'creator.posts': '帖子',
-    'creator.subscribe': '订阅',
-    'ranking.title': '顶级创作者',
-    'messages.title': '消息',
-    'account.profile': '个人资料',
-    'account.settings': '设置',
   },
 };
 
