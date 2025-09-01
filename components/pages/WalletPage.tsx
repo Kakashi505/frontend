@@ -236,8 +236,8 @@ export function WalletPage() {
                       <Image
                         src={purchase.creator.avatar}
                         alt={purchase.creator.name}
-                        width={40}
-                        height={40}
+                        width={48}
+                        height={48}
                         className="rounded-full object-cover"
                       />
                       <div>
