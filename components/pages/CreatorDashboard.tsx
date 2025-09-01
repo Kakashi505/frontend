@@ -395,13 +395,20 @@ export function CreatorDashboard() {
                   <div className="space-y-4">
                     {recentSubscribers.map((subscriber) => (
                       <div key={subscriber.id} className="flex items-center space-x-3">
-                        <Image
-                          src={subscriber.avatar}
-                          alt={subscriber.displayName}
-                          width={40}
-                          height={40}
-                          className="rounded-full object-cover"
-                        />
+                        <div className="relative w-10 h-10">
+                          <Image
+                            src={subscriber.avatar}
+                            alt={subscriber.displayName}
+                            fill
+                            className="rounded-full object-cover"
+                            sizes="(max-width: 425px) 32px,
+                                   (max-width: 768px) 40px,
+                                   (max-width: 1024px) 48px,
+                                   (max-width: 1440px) 56px,
+                                   (max-width: 1600px) 64px,
+                                   72px"
+                          />
+                        </div>
                         <div className="flex-1">
                           <p className="font-medium text-gray-900">{subscriber.displayName}</p>
                           <p className="text-sm text-gray-600">@{subscriber.username}</p>
@@ -478,13 +485,18 @@ export function CreatorDashboard() {
                     <div key={item.id} className="flex items-center space-x-4 p-4 border rounded-lg">
                       <div className="flex items-center space-x-3">
                         {getTypeIcon(item.type)}
-                        <div className="relative">
+                        <div className="relative aspect-video w-15 h-10">
                           <Image
                             src={item.thumbnail}
                             alt={item.title}
-                            width={60}
-                            height={40}
+                            fill
                             className="rounded object-cover"
+                            sizes="(max-width: 425px) 100px,
+                                   (max-width: 768px) 140px,
+                                   (max-width: 1024px) 180px,
+                                   (max-width: 1440px) 220px,
+                                   (max-width: 1600px) 260px,
+                                   300px"
                           />
                           {item.type === 'video' && (
                             <div className="absolute inset-0 flex items-center justify-center">
@@ -611,13 +623,20 @@ export function CreatorDashboard() {
                   {recentSubscribers.map((subscriber) => (
                     <div key={subscriber.id} className="flex items-center justify-between p-4 border rounded-lg">
                       <div className="flex items-center space-x-4">
-                        <Image
-                          src={subscriber.avatar}
-                          alt={subscriber.displayName}
-                          width={48}
-                          height={48}
-                          className="rounded-full object-cover"
-                        />
+                        <div className="relative w-12 h-12">
+                          <Image
+                            src={subscriber.avatar}
+                            alt={subscriber.displayName}
+                            fill
+                            className="rounded-full object-cover"
+                            sizes="(max-width: 425px) 32px,
+                                   (max-width: 768px) 40px,
+                                   (max-width: 1024px) 48px,
+                                   (max-width: 1440px) 56px,
+                                   (max-width: 1600px) 64px,
+                                   72px"
+                          />
+                        </div>
                         <div>
                           <p className="font-medium text-gray-900">{subscriber.displayName}</p>
                           <p className="text-sm text-gray-600">@{subscriber.username}</p>
@@ -720,13 +739,18 @@ export function CreatorDashboard() {
                     <div key={post.id} className="flex items-center space-x-4 p-4 border rounded-lg">
                       <div className="flex items-center space-x-3">
                         {getTypeIcon(post.type)}
-                        <div className="relative">
+                        <div className="relative aspect-video w-20 h-15">
                           <Image
                             src={post.thumbnail}
                             alt={post.title}
-                            width={80}
-                            height={60}
+                            fill
                             className="rounded object-cover"
+                            sizes="(max-width: 425px) 100px,
+                                   (max-width: 768px) 140px,
+                                   (max-width: 1024px) 180px,
+                                   (max-width: 1440px) 220px,
+                                   (max-width: 1600px) 260px,
+                                   300px"
                           />
                           {post.type === 'video' && (
                             <div className="absolute inset-0 flex items-center justify-center">
