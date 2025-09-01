@@ -15,10 +15,18 @@ const conversations = [
       displayName: 'Sakura',
       avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400',
       isOnline: true,
+      isVerified: true,
+      isSubscribed: true,
+      subscriptionPlan: 'Premium',
+      category: 'Photography',
+      canTip: true,
+      tipAmounts: [100, 500, 1000, 2000]
     },
     lastMessage: 'Thank you so much for your support! 💕',
     timestamp: new Date(Date.now() - 1000 * 60 * 5),
     unread: 2,
+    messageType: 'text',
+    isPremium: false
   },
   {
     id: '2',

@@ -27,13 +27,22 @@ export function AdminDashboard() {
   const { t } = useI18n();
   const [activeTab, setActiveTab] = useState('overview');
 
-  // Mock admin stats
+  // Enhanced admin stats with myfans.jp features
   const adminStats = {
     pendingReviews: 23,
     pendingReports: 15,
     pendingKYC: 8,
     bannedUsers: 12,
     takedownRequests: 5,
+    // Additional myfans.jp metrics
+    totalRevenue: 12500000, // 12.5M JPY
+    activeCreators: 1247,
+    totalSubscribers: 45678,
+    contentViolations: 3,
+    paymentIssues: 2,
+    systemHealth: 'excellent',
+    lastBackup: '2024-01-15 02:00',
+    uptime: '99.9%'
   };
 
   // Check if user has admin access

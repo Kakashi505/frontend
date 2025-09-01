@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Star, ChevronLeft, ChevronRight, Heart, MessageCircle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import React from 'react'; // Added missing import for React
+import React from 'react';
 
 // Ranking sections data
 const rankingSections = [
@@ -198,7 +198,8 @@ function PostCard({ post, index }: { post: any, index: number }) {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: index * 0.1 }}
-      className="relative bg-white rounded-xl shadow-sm hover:shadow-md transition duration-300 flex-shrink-0 w-[85%] xs:w-[70%] sm:w-[45%] md:w-30%] lg:w-[23%] xl:w-[20%] xxl:w-[18%]">
+      className="relative bg-white rounded-xl shadow-sm hover:shadow-md transition duration-300 flex-shrink-0 w-[85%] xs:w-[70%] sm:w-[45%] md:w-[30%] lg:w-[23%] xl:w-[20%] 2xl:w-[18%]"
+    >
       {/* NEW Badge */}
       {post.isNew && (
         <div className="absolute top-2 left-2 z-10">
@@ -396,8 +397,18 @@ export function RankingPage() {
         </div>
       </div>
 
-     
-      
+      {/* Floating Buttons */}
+      <div className="fixed right-4 top-1/2 -translate-y-1/2 space-y-2 z-50">
+        <button className="w-10 h-10 bg-gray-800 text-white rounded-full flex items-center justify-center text-xs font-medium hover:bg-gray-700 transition-colors">
+          Copy
+        </button>
+        <button className="w-10 h-10 bg-gray-800 text-white rounded-full flex items-center justify-center text-xs font-medium hover:bg-gray-700 transition-colors">
+          Capture
+        </button>
+        <button className="w-10 h-10 bg-gray-800 text-white rounded-full flex items-center justify-center text-xs font-medium hover:bg-gray-700 transition-colors">
+          AIOCR
+        </button>
+      </div>
     </div>
   );
 }

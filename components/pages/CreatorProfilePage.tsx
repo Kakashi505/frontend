@@ -66,6 +66,34 @@ interface Creator {
   isSubscribed: boolean;
   subscriptionPlans: SubscriptionPlan[];
   postList: Post[];
+  // Enhanced myfans.jp features
+  analytics: {
+    totalViews: number;
+    totalLikes: number;
+    totalComments: number;
+    totalRevenue: number;
+    monthlyGrowth: number;
+    topPosts: string[];
+  };
+  verification: {
+    isAgeVerified: boolean;
+    isIdentityVerified: boolean;
+    isLegalConsent: boolean;
+    verificationDate: string;
+  };
+  monetization: {
+    subscriptionRevenue: number;
+    ppvRevenue: number;
+    tipRevenue: number;
+    commissionRate: number;
+    payoutSchedule: string;
+  };
+  settings: {
+    messageRejection: boolean;
+    autoReply: boolean;
+    contentVisibility: 'public' | 'subscribers' | 'premium';
+    language: 'ja' | 'en';
+  };
 }
 
 // Mock creator data

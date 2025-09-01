@@ -27,7 +27,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-// Mock data
+// Enhanced mock data with myfans.jp features
 const purchaseHistory = [
   {
     id: '1',
@@ -36,12 +36,18 @@ const purchaseHistory = [
       name: 'Sakura',
       username: 'sakura_chan',
       avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400',
+      isVerified: true,
+      category: 'Photography'
     },
-    item: 'Premium Subscription',
-    amount: 19.99,
+    item: 'Premium Subscription (980円/month)',
+    amount: 980,
+    currency: 'JPY',
     date: '2024-01-15',
     status: 'completed',
     receipt: 'RCPT-001',
+    paymentMethod: 'Credit Card',
+    transactionFee: 49,
+    netAmount: 931
   },
   {
     id: '2',
