@@ -8,7 +8,7 @@ import { I18nProvider } from '@/contexts/I18nContext';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'MyFans - Connect with Your Favorite Creators',
+  title: 'OnlyU - Connect with Your Favorite Creators',
   description: 'The ultimate platform for creators and fans to connect and share exclusive content.',
 };
 

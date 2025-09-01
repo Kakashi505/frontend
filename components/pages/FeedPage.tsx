@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 
 // --------------------
-// Enhanced Data Structure for myfans.jp
+// Enhanced Data Structure for OnlyU.jp
 // --------------------
 const feedVideos = [
   {
@@ -69,7 +69,7 @@ const feedVideos = [
 // --------------------
 // Enhanced Components
 // --------------------
-function FeedNavigation({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: (t: string) => void }) {
+function FeedNavigation({ activeTab, setActiveTab }: { activeTab: 'recommendation' | 'following', setActiveTab: React.Dispatch<React.SetStateAction<'recommendation' | 'following'>> }) {
   return (
     <div className="flex items-center justify-between px-3 sm:px-4 lg:px-6 xl:px-8 py-3 border-b border-gray-200 bg-white/80 backdrop-blur-md">
       <div className="flex items-center space-x-3 sm:space-x-4 lg:space-x-6">

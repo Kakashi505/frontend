@@ -218,11 +218,11 @@ export function AccountPage() {
         </Card>
       </div>
 
-      {/* About myfans Section */}
+      {/* About OnlyU Section */}
       <div className="space-y-4">
         <div className="flex items-center space-x-2">
           <FileText className="w-5 h-5 text-gray-600" />
-          <h2 className="text-lg font-semibold text-gray-900">About myfans</h2>
+          <h2 className="text-lg font-semibold text-gray-900">About OnlyU</h2>
         </div>
         
         <Card>

@@ -27,14 +27,14 @@ export function AdminDashboard() {
   const { t } = useI18n();
   const [activeTab, setActiveTab] = useState('overview');
 
-  // Enhanced admin stats with myfans.jp features
+  // Enhanced admin stats with OnlyU.jp features
   const adminStats = {
     pendingReviews: 23,
     pendingReports: 15,
     pendingKYC: 8,
     bannedUsers: 12,
     takedownRequests: 5,
-    // Additional myfans.jp metrics
+    // Additional OnlyU.jp metrics
     totalRevenue: 12500000, // 12.5M JPY
     activeCreators: 1247,
     totalSubscribers: 45678,

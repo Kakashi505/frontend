@@ -23,7 +23,7 @@ export function Header() {
         <div className="flex items-center space-x-2">
           <Image
             src="/assets/logo.png"
-            alt="MyFans Logo"
+            alt="OnlyU Logo"
             width={128}
             height={64}
             className="w-32 h-16 object-contain"

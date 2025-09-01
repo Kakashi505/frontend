@@ -1,16 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Export as a static site
-  output: 'export',
-
   // Skip ESLint during builds (optional, keeps builds faster)
   eslint: {
     ignoreDuringBuilds: true,
   },
 
-  // Disable Next.js image optimization (required for static export)
+  // Enable Next.js image optimization
   images: {
-    unoptimized: true,
+    domains: ['images.pexels.com', 'images.unsplash.com'],
   },
 };
 

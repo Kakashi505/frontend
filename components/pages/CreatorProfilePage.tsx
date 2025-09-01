@@ -66,7 +66,7 @@ interface Creator {
   isSubscribed: boolean;
   subscriptionPlans: SubscriptionPlan[];
   postList: Post[];
-  // Enhanced myfans.jp features
+  // Enhanced OnlyU.jp features
   analytics: {
     totalViews: number;
     totalLikes: number;
@@ -172,6 +172,33 @@ const creatorData: Creator = {
       price: 2.99,
     },
   ],
+  analytics: {
+    totalViews: 1250000,
+    totalLikes: 89000,
+    totalComments: 12000,
+    totalRevenue: 12500,
+    monthlyGrowth: 15.5,
+    topPosts: ['1', '2']
+  },
+  verification: {
+    isAgeVerified: true,
+    isIdentityVerified: true,
+    isLegalConsent: true,
+    verificationDate: '2023-01-15'
+  },
+  monetization: {
+    subscriptionRevenue: 8000,
+    ppvRevenue: 3500,
+    tipRevenue: 1000,
+    commissionRate: 0.85,
+    payoutSchedule: 'monthly'
+  },
+  settings: {
+    messageRejection: false,
+    autoReply: true,
+    contentVisibility: 'public',
+    language: 'ja'
+  }
 };
 
 export function CreatorProfilePage({ username }: { username: string }) {

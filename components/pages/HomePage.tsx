@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 
-// Enhanced top videos data with myfans.jp features
+// Enhanced top videos data with OnlyU.jp features
 const topVideos = [
   { 
     id: '1', 

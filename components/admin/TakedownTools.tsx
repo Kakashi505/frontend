@@ -142,7 +142,7 @@ export function TakedownTools() {
     return true;
   });
 
-  const handleAction = (requestId: string, action: 'approve' | 'reject' | 'in_progress') => {
+  const handleAction = (requestId: string, action: 'approved' | 'rejected' | 'in_progress') => {
     setRequests(prev =>
       prev.map(request =>
         request.id === requestId
@@ -343,7 +343,7 @@ export function TakedownTools() {
 
                           <div className="flex space-x-2">
                             <Button
-                              onClick={() => handleAction(request.id, 'approve')}
+                              onClick={() => handleAction(request.id, 'approved')}
                               className="bg-green-600 hover:bg-green-700"
                             >
                               <CheckCircle className="w-4 h-4 mr-2" />
@@ -357,7 +357,7 @@ export function TakedownTools() {
                               Mark In Progress
                             </Button>
                             <Button
-                              onClick={() => handleAction(request.id, 'reject')}
+                              onClick={() => handleAction(request.id, 'rejected')}
                               variant="destructive"
                             >
                               <XCircle className="w-4 h-4 mr-2" />
