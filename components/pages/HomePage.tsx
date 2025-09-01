@@ -503,30 +503,26 @@ export function HomePage() {
       </section>
 
       {/* Creators Section */}
-      <section className="px-4 py-12 bg-gray-50">
+      <section className="px-4 py-8 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Creators</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Creators</h2>
+          <div className="space-y-3">
             {trendingCreators.map((creator) => (
-              <Card key={creator.id} className="overflow-hidden hover:shadow-lg transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-4">
-                    <Image
-                      src={creator.avatar}
-                      alt={creator.displayName}
-                      width={60}
-                      height={60}
-                      className="rounded-full object-cover"
-                    />
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-gray-900 mb-1">{creator.displayName}</h3>
-                      <p className="text-sm text-gray-600 mb-2">{creator.briefStats.category}</p>
-                      <div className="flex items-center space-x-4 text-xs text-gray-500">
+              <Card key={creator.id} className="overflow-hidden hover:shadow-md transition-all duration-300 bg-white">
+                <CardContent className="p-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                      <span className="text-gray-500 text-sm">👤</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-medium text-gray-900 mb-1 overflow-hidden text-ellipsis whitespace-nowrap">{creator.displayName}</h3>
+                      <p className="text-xs text-gray-500 mb-1">{creator.briefStats.category}</p>
+                      <div className="flex items-center space-x-3 text-xs text-gray-500">
                         <span>{creator.briefStats.followers} followers</span>
                         <span>{creator.briefStats.posts} posts</span>
                       </div>
                     </div>
-                    <Button size="sm" className="bg-pink-500 hover:bg-pink-600 text-white">
+                    <Button size="sm" className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-1 text-sm">
                       Follow
                     </Button>
                   </div>

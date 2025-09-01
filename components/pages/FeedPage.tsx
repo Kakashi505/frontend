@@ -1,198 +1,220 @@
 'use client';
 
 import { useState } from 'react';
-import { Heart, MessageCircle, Share2, Filter, Star } from 'lucide-react';
+import { Heart, MessageCircle, Bookmark, Plus, Share2, MoreHorizontal, Play, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { motion } from "framer-motion";
 
-const feedPosts = [
+// --------------------
+// Data
+// --------------------
+const feedVideos = [
   {
     id: '1',
-    creator: {
-      username: 'yuki_model',
-      displayName: 'Yuki Tanaka',
-      avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400',
-      isVerified: true,
-      tier: 'premium',
-    },
-    content: 'Behind the scenes from today\'s fashion shoot! Loving this new collection 💫',
-    image: 'https://images.pexels.com/photos/1040945/pexels-photo-1040945.jpeg?auto=compress&cs=tinysrgb&w=800',
-    likes: 2341,
-    comments: 156,
-    shares: 43,
-    timestamp: new Date(Date.now() - 1000 * 60 * 15),
+    creator: 'Mionya♡School teacher',
+    description: 'I told you to hold back...♡ I gave you a realistic footjob wit...',
+    tags: ['Footjob', 'Erotic clothing', 'Beautiful breasts'],
+    likes: 14,
+    comments: 3,
+    bookmarks: 6,
+    duration: '0:52',
+    timeAgo: '2 days ago',
     isPremium: true,
-  },
-  {
-    id: '2',
-    creator: {
-      username: 'chef_marcus',
-      displayName: 'Marcus Johnson',
-      avatar: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=400',
-      isVerified: true,
-      tier: 'standard',
-    },
-    content: 'New recipe tutorial is live! Making authentic ramen from scratch 🍜',
-    image: 'https://images.pexels.com/photos/884600/pexels-photo-884600.jpeg?auto=compress&cs=tinysrgb&w=800',
-    likes: 1876,
-    comments: 234,
-    shares: 67,
-    timestamp: new Date(Date.now() - 1000 * 60 * 45),
-    isPremium: false,
-  },
-  {
-    id: '3',
-    creator: {
-      username: 'luna_music',
-      displayName: 'Luna Park',
-      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=400',
-      isVerified: false,
-      tier: 'basic',
-    },
-    content: 'Acoustic session in the studio tonight. What song should I cover next? 🎵',
-    image: 'https://images.pexels.com/photos/1751731/pexels-photo-1751731.jpeg?auto=compress&cs=tinysrgb&w=800',
-    likes: 943,
-    comments: 89,
-    shares: 21,
-    timestamp: new Date(Date.now() - 1000 * 60 * 90),
-    isPremium: false,
-  },
+  }
 ];
 
-export function FeedPage() {
-  const [likedPosts, setLikedPosts] = useState<string[]>([]);
-  const [filterType, setFilterType] = useState<'all' | 'subscribed' | 'premium'>('all');
-
-  const toggleLike = (postId: string) => {
-    setLikedPosts(prev =>
-      prev.includes(postId)
-        ? prev.filter(id => id !== postId)
-        : [...prev, postId]
-    );
-  };
-
-  const filteredPosts = feedPosts.filter(post => {
-    if (filterType === 'subscribed') return true; // Mock: show all as subscribed
-    if (filterType === 'premium') return post.isPremium;
-    return true;
-  });
-
+// --------------------
+// Components
+// --------------------
+function FeedNavigation({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: (t: string) => void }) {
   return (
-    <div className="max-w-2xl mx-auto space-y-6">
-      {/* Filter Section */}
-      <div className="flex items-center justify-between bg-white rounded-lg p-4 shadow-sm">
-        <h1 className="text-2xl font-bold text-gray-900">Your Feed</h1>
-        <div className="flex items-center space-x-2">
-          <Filter className="w-4 h-4 text-gray-500" />
-          <div className="flex space-x-1">
-            {[
-              { key: 'all', label: 'All' },
-              { key: 'subscribed', label: 'Subscribed' },
-              { key: 'premium', label: 'Premium' },
-            ].map((filter) => (
-              <Button
-                key={filter.key}
-                variant={filterType === filter.key ? 'default' : 'ghost'}
-                size="sm"
-                onClick={() => setFilterType(filter.key as any)}
-                className={filterType === filter.key ? 'bg-purple-600 hover:bg-purple-700' : ''}
-              >
-                {filter.label}
-              </Button>
-            ))}
+    <div className="flex items-center justify-between px-3 sm:px-4 lg:px-6 xl:px-8 py-3 border-b border-gray-200 bg-white/80 backdrop-blur-md">
+      <div className="flex items-center space-x-3 sm:space-x-4 lg:space-x-6">
+        <button
+          onClick={() => setActiveTab('recommendation')}
+          className={`text-xs sm:text-sm lg:text-base transition-colors ${
+            activeTab === 'recommendation' ? 'text-gray-500' : 'text-gray-900'
+          }`}
+        >
+          Recommendation
+        </button>
+        <button
+          onClick={() => setActiveTab('following')}
+          className={`text-xs sm:text-sm lg:text-base transition-colors ${
+            activeTab === 'following' ? 'text-purple-600' : 'text-gray-500'
+          }`}
+        >
+          Following
+        </button>
+      </div>
+
+      <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
+        <IconButton icon={<Share2 />} />
+        <IconButton icon={<MoreHorizontal />} />
+      </div>
+    </div>
+  );
+}
+
+function IconButton({ icon }: { icon: React.ReactNode }) {
+  return (
+    <button className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-full transition-colors">
+      {icon}
+    </button>
+  );
+}
+
+function FeedVideoCard({ video }: { video: typeof feedVideos[0] }) {
+  return (
+    <div className="mb-6 sm:mb-8 lg:mb-10">
+      {/* Thumbnail */}
+      <div className="relative mb-4">
+        <div className="w-full h-64 sm:h-80 lg:h-96 xl:h-[28rem] bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl sm:rounded-2xl border border-gray-200 flex items-center justify-center overflow-hidden shadow-lg">
+          <div className="w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 bg-gray-300 rounded-full flex items-center justify-center">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-20 bg-gray-400 rounded-lg"></div>
+          </div>
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
+            <div className="w-14 h-14 lg:w-16 lg:h-16 bg-white rounded-full flex items-center justify-center shadow-xl border border-gray-200">
+              <Play className="w-5 h-5 lg:w-6 lg:h-6 text-purple-600" />
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Posts */}
-      <div className="space-y-6">
-        {filteredPosts.map((post) => (
-          <Card key={post.id} className="overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
-            <CardContent className="p-0">
-              {/* Post Header */}
-              <div className="p-6 pb-4">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center space-x-3">
-                    <img
-                      src={post.creator.avatar}
-                      alt={post.creator.displayName}
-                      className="w-12 h-12 rounded-full object-cover"
-                    />
-                    <div>
-                      <div className="flex items-center space-x-2">
-                        <h3 className="font-semibold text-gray-900">{post.creator.displayName}</h3>
-                        {post.creator.isVerified && (
-                          <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                        )}
-                        {post.isPremium && (
-                          <Badge variant="secondary" className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white">
-                            Premium
-                          </Badge>
-                        )}
-                      </div>
-                      <p className="text-sm text-gray-500">@{post.creator.username}</p>
-                    </div>
-                  </div>
-                  <Badge variant="outline" className="text-xs">
-                    {post.creator.tier}
-                  </Badge>
-                </div>
-                <p className="text-gray-800">{post.content}</p>
-              </div>
+      {/* CTA Button */}
+      <div className="mb-6">
+        <Button className="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white py-3 sm:py-4 px-6 rounded-2xl text-lg font-medium flex items-center justify-center gap-3 shadow-lg">
+          <Play className="w-5 h-5" />
+          <span>Watch the full version (14 minutes)</span>
+          <ArrowRight className="w-5 h-5" />
+        </Button>
+      </div>
 
-              {/* Post Image */}
-              {post.image && (
-                <div className="relative">
-                  <img
-                    src={post.image}
-                    alt="Post content"
-                    className="w-full h-80 object-cover"
-                  />
-                  {post.isPremium && (
-                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                      <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full font-medium">
-                        Premium Content
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
+      {/* Details */}
+      <div>
+        <h3 className="text-xl lg:text-2xl font-semibold mb-2 text-gray-900">{video.creator}</h3>
+        <p className="text-gray-600 mb-4 leading-relaxed">{video.description}</p>
+        
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {video.tags.map((tag, i) => (
+            <span key={i} className="px-3 py-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-sm rounded-full shadow-md">
+              {tag}
+            </span>
+          ))}
+        </div>
 
-              {/* Post Actions */}
-              <div className="p-6 pt-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-6">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => toggleLike(post.id)}
-                      className={`flex items-center space-x-2 ${
-                        likedPosts.includes(post.id) ? 'text-red-500' : 'text-gray-600'
-                      } hover:text-red-500 transition-colors`}
-                    >
-                      <Heart className={`w-5 h-5 ${likedPosts.includes(post.id) ? 'fill-current' : ''}`} />
-                      <span>{post.likes + (likedPosts.includes(post.id) ? 1 : 0)}</span>
-                    </Button>
-                    
-                    <Button variant="ghost" size="sm" className="flex items-center space-x-2 text-gray-600 hover:text-blue-500">
-                      <MessageCircle className="w-5 h-5" />
-                      <span>{post.comments}</span>
-                    </Button>
-                    
-                    <Button variant="ghost" size="sm" className="flex items-center space-x-2 text-gray-600 hover:text-green-500">
-                      <Share2 className="w-5 h-5" />
-                      <span>{post.shares}</span>
-                    </Button>
-                  </div>
-                  
-                  <span className="text-sm text-gray-500">
-                    {new Date(post.timestamp).toLocaleTimeString()}
-                  </span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+        {/* Info */}
+        <div className="flex items-center justify-between text-sm text-gray-500">
+          <span>Sample</span>
+          <div className="flex items-center gap-2">
+            <span>0:00 / {video.duration}</span>
+            <span>•</span>
+            <span>{video.timeAgo}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FeedSidebar({
+  video,
+  liked,
+  bookmarked,
+  toggleLike,
+  toggleBookmark
+}: {
+  video: typeof feedVideos[0],
+  liked: boolean,
+  bookmarked: boolean,
+  toggleLike: (id: string) => void,
+  toggleBookmark: (id: string) => void
+}) {
+  return (
+    <div className="lg:w-20 w-full flex flex-row lg:flex-col items-center justify-center lg:justify-start py-6 space-x-4 lg:space-x-0 lg:space-y-6 border-t lg:border-t-0 lg:border-l border-gray-200 bg-gray-50/50">
+      {/* Swipe Indicator */}
+      <div className="hidden lg:flex flex-col items-center mb-8">
+        <motion.span className="text-xs text-gray-900" initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, repeat: Infinity, repeatType: "reverse" }}>
+          Swipe
+        </motion.span>
+        <motion.div className="w-px h-4 bg-gray-300 mt-1" initial={{ scaleY: 0.6, opacity: 0.5 }} animate={{ scaleY: 1, opacity: 1 }} transition={{ duration: 0.6, repeat: Infinity, repeatType: "reverse" }} />
+      </div>
+
+      {/* Buttons */}
+      <SidebarButton icon={<Plus className="text-white" />} bg="gradient" />
+      <SidebarButton
+        icon={<Heart className={`${liked ? 'text-white fill-current' : 'text-gray-600'}`} />}
+        active={liked}
+        onClick={() => toggleLike(video.id)}
+        count={video.likes}
+      />
+      <SidebarButton icon={<MessageCircle className="text-gray-600" />} count={video.comments} />
+      <SidebarButton
+        icon={<Bookmark className={`${bookmarked ? 'text-white fill-current' : 'text-gray-600'}`} />}
+        active={bookmarked}
+        onClick={() => toggleBookmark(video.id)}
+        count={video.bookmarks}
+      />
+    </div>
+  );
+}
+
+function SidebarButton({ icon, count, active, onClick, bg }: {
+  icon: React.ReactNode,
+  count?: number,
+  active?: boolean,
+  onClick?: () => void,
+  bg?: 'gradient'
+}) {
+  return (
+    <div className="flex flex-col items-center space-y-1">
+      <button
+        onClick={onClick}
+        className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors shadow-lg 
+          ${bg === 'gradient' ? 'bg-gradient-to-br from-pink-500 to-purple-600' :
+          active ? 'bg-pink-500' : 'bg-white hover:bg-gray-100 border border-gray-200'}
+        `}
+      >
+        {icon}
+      </button>
+      {count !== undefined && <span className="text-xs text-gray-500">{count}</span>}
+    </div>
+  );
+}
+
+// --------------------
+// Main Page
+// --------------------
+export function FeedPage() {
+  const [activeTab, setActiveTab] = useState<'recommendation' | 'following'>('following');
+  const [likedVideos, setLikedVideos] = useState<string[]>([]);
+  const [bookmarkedVideos, setBookmarkedVideos] = useState<string[]>([]);
+
+  const toggleLike = (id: string) =>
+    setLikedVideos(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
+
+  const toggleBookmark = (id: string) =>
+    setBookmarkedVideos(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
+
+  return (
+    <div className="bg-white text-gray-900 container mx-auto">
+      <FeedNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+      <div className="flex flex-col lg:flex-row max-w-7xl mx-auto">
+        <div className="flex-1 px-4 py-6">
+          {feedVideos.map(video => (
+            <FeedVideoCard key={video.id} video={video} />
+          ))}
+        </div>
+        {feedVideos.map(video => (
+          <FeedSidebar
+            key={video.id}
+            video={video}
+            liked={likedVideos.includes(video.id)}
+            bookmarked={bookmarkedVideos.includes(video.id)}
+            toggleLike={toggleLike}
+            toggleBookmark={toggleBookmark}
+          />
         ))}
       </div>
     </div>
