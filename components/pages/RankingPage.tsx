@@ -10,7 +10,7 @@ import React from 'react';
 const rankingSections = [
   {
     id: 'overall',
-    title: 'Overall Ranking',
+    title: '総合ランキング',
     icon: '🏆',
     posts: [
       {
@@ -21,7 +21,7 @@ const rankingSections = [
         duration: '1:26:22',
         creator: 'Creator Name',
         title: '9/1まで500円OFF!! 【不倫奥さん】挑山さ〇か似',
-        timeAgo: '15 hours ago',
+        timeAgo: '15時間前',
         likes: 2,
         comments: 3
       },
@@ -33,7 +33,7 @@ const rankingSections = [
         duration: '00:45',
         creator: 'Creator Name',
         title: '【スカートめくり】スカートの奥について',
-        timeAgo: '8 hours ago',
+        timeAgo: '8時間前',
         likes: 4,
         comments: 0
       },

@@ -27,8 +27,8 @@ const feedVideos = [
     },
     content: {
       type: 'video', // image, video, text, gallery
-      title: 'Spring Cherry Blossom Session',
-      description: 'Beautiful spring photoshoot in the heart of Tokyo. Exclusive behind-the-scenes content for subscribers only.',
+      title: '春の桜セッション',
+      description: '東京の中心で美しい春の写真撮影。サブスクライバー限定の特別な裏側コンテンツ。',
       mediaUrl: '/api/placeholder/400/600',
       thumbnail: '/api/placeholder/400/600',
       duration: '14:32',
@@ -79,7 +79,7 @@ function FeedNavigation({ activeTab, setActiveTab }: { activeTab: 'recommendatio
             activeTab === 'recommendation' ? 'text-gray-500' : 'text-gray-900'
           }`}
         >
-          Recommendation
+          おすすめ
         </button>
         <button
           onClick={() => setActiveTab('following')}
@@ -87,7 +87,7 @@ function FeedNavigation({ activeTab, setActiveTab }: { activeTab: 'recommendatio
             activeTab === 'following' ? 'text-purple-600' : 'text-gray-500'
           }`}
         >
-          Following
+          フォロー中
         </button>
       </div>
 

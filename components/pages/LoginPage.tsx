@@ -31,9 +31,9 @@ export function LoginPage() {
     
     try {
       await new Promise(resolve => setTimeout(resolve, 1500));
-      setSuccessMessage('Login successful! Redirecting...');
+      setSuccessMessage('ログイン成功！リダイレクト中...');
     } catch (error) {
-      setErrors({ general: 'Login failed. Please check your credentials.' });
+      setErrors({ general: 'ログインに失敗しました。認証情報を確認してください。' });
     } finally {
       setIsLoading(false);
     }
@@ -47,9 +47,9 @@ export function LoginPage() {
       try {
         await new Promise(resolve => setTimeout(resolve, 1000));
         setIsCodeSent(true);
-        setSuccessMessage('Verification code sent!');
+        setSuccessMessage('認証コードを送信しました！');
       } catch (error) {
-        setErrors({ phoneNumber: 'Failed to send code.' });
+        setErrors({ phoneNumber: 'コードの送信に失敗しました。' });
       } finally {
         setIsLoading(false);
       }
@@ -57,9 +57,9 @@ export function LoginPage() {
       setIsLoading(true);
       try {
         await new Promise(resolve => setTimeout(resolve, 1000));
-        setSuccessMessage('Phone verification successful!');
+        setSuccessMessage('電話認証が成功しました！');
       } catch (error) {
-        setErrors({ verificationCode: 'Invalid code.' });
+        setErrors({ verificationCode: '無効なコードです。' });
       } finally {
         setIsLoading(false);
       }
@@ -70,9 +70,9 @@ export function LoginPage() {
     setIsTwitterLoading(true);
     try {
       await new Promise(resolve => setTimeout(resolve, 2000));
-      setSuccessMessage('Twitter authentication successful!');
+      setSuccessMessage('Twitter認証が成功しました！');
     } catch (error) {
-      setErrors({ general: 'Twitter login failed.' });
+      setErrors({ general: 'Twitterログインに失敗しました。' });
     } finally {
       setIsTwitterLoading(false);
     }
@@ -96,8 +96,8 @@ export function LoginPage() {
           >
             <Lock className="w-10 h-10 text-white" />
           </motion.div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h1>
-          <p className="text-gray-600">Sign in to your OnlyU account</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">おかえりなさい</h1>
+          <p className="text-gray-600">OnlyUアカウントにサインイン</p>
         </div>
 
         {/* Main Login Card */}
@@ -141,11 +141,11 @@ export function LoginPage() {
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="email" className="flex items-center space-x-2">
                   <Mail className="w-4 h-4" />
-                  <span>Email</span>
+                  <span>メール</span>
                 </TabsTrigger>
                 <TabsTrigger value="phone" className="flex items-center space-x-2">
                   <Phone className="w-4 h-4" />
-                  <span>Phone</span>
+                  <span>電話</span>
                 </TabsTrigger>
               </TabsList>
 
@@ -154,7 +154,7 @@ export function LoginPage() {
                 <form onSubmit={handleEmailLogin} className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address
+                      メールアドレス
                     </label>
                     <div className="relative">
                       <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -162,7 +162,7 @@ export function LoginPage() {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email"
+                        placeholder="メールアドレスを入力"
                         className="pl-10"
                       />
                     </div>
@@ -170,7 +170,7 @@ export function LoginPage() {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Password
+                      パスワード
                     </label>
                     <div className="relative">
                       <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -178,7 +178,7 @@ export function LoginPage() {
                         type={showPassword ? 'text' : 'password'}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Enter your password"
+                        placeholder="パスワードを入力"
                         className="pl-10 pr-10"
                       />
                       <button
@@ -199,13 +199,13 @@ export function LoginPage() {
                         onChange={(e) => setRememberMe(e.target.checked)}
                         className="rounded border-gray-300 text-purple-600 focus:ring-purple-500"
                       />
-                      <span className="text-sm text-gray-600">Remember me</span>
+                      <span className="text-sm text-gray-600">ログイン情報を保存</span>
                     </label>
                     <Link
                       href="/forgot-password"
                       className="text-sm text-purple-600 hover:text-purple-700 font-medium"
                     >
-                      Forgot password?
+                      パスワードを忘れた？
                     </Link>
                   </div>
 
@@ -217,11 +217,11 @@ export function LoginPage() {
                     {isLoading ? (
                       <div className="flex items-center space-x-2">
                         <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        <span>Signing in...</span>
+                        <span>サインイン中...</span>
                       </div>
                     ) : (
                       <div className="flex items-center space-x-2">
-                        <span>Sign In</span>
+                        <span>サインイン</span>
                         <ArrowRight className="w-4 h-4" />
                       </div>
                     )}
@@ -234,7 +234,7 @@ export function LoginPage() {
                 <form onSubmit={handlePhoneVerification} className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number
+                      電話番号
                     </label>
                     <div className="relative">
                       <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -242,7 +242,7 @@ export function LoginPage() {
                         type="tel"
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
-                        placeholder="+81-XX-XXXX-XXXX or 0XX-XXXX-XXXX"
+                        placeholder="+81-XX-XXXX-XXXX または 0XX-XXXX-XXXX"
                         className="pl-10"
                         disabled={isCodeSent}
                       />
@@ -251,19 +251,19 @@ export function LoginPage() {
 
                   {isCodeSent && (
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Verification Code
-                      </label>
+                                              <label className="block text-sm font-medium text-gray-700 mb-2">
+                          認証コード
+                        </label>
                       <Input
                         type="text"
                         value={verificationCode}
                         onChange={(e) => setVerificationCode(e.target.value)}
-                        placeholder="Enter 6-digit code"
+                        placeholder="6桁のコードを入力"
                         maxLength={6}
                       />
-                      <p className="text-xs text-gray-500 mt-1">
-                        We've sent a verification code to your phone number
-                      </p>
+                                              <p className="text-xs text-gray-500 mt-1">
+                          認証コードを電話番号に送信しました
+                        </p>
                     </div>
                   )}
 
@@ -275,11 +275,11 @@ export function LoginPage() {
                     {isLoading ? (
                       <div className="flex items-center space-x-2">
                         <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        <span>{isCodeSent ? 'Verifying...' : 'Sending code...'}</span>
+                        <span>{isCodeSent ? '認証中...' : 'コード送信中...'}</span>
                       </div>
                     ) : (
                       <div className="flex items-center space-x-2">
-                        <span>{isCodeSent ? 'Verify & Sign In' : 'Send Verification Code'}</span>
+                        <span>{isCodeSent ? '認証してサインイン' : '認証コードを送信'}</span>
                         <ArrowRight className="w-4 h-4" />
                       </div>
                     )}
@@ -314,12 +314,12 @@ export function LoginPage() {
             {/* Sign Up Link */}
             <div className="text-center pt-4 border-t border-gray-200">
               <p className="text-gray-600">
-                Don't have an account?{' '}
+                アカウントをお持ちでないですか？{' '}
                 <Link
                   href="/signup"
                   className="text-purple-600 hover:text-purple-700 font-medium"
                 >
-                  Sign up here
+                  ここでサインアップ
                 </Link>
               </p>
             </div>
@@ -329,14 +329,15 @@ export function LoginPage() {
         {/* Additional Info */}
         <div className="mt-6 text-center">
           <p className="text-xs text-gray-500">
-            By signing in, you agree to our{' '}
+            サインインすることで、{' '}
             <Link href="/terms" className="text-purple-600 hover:text-purple-700">
-              Terms of Service
+              利用規約
             </Link>{' '}
-            and{' '}
+            と{' '}
             <Link href="/privacy" className="text-purple-600 hover:text-purple-700">
-              Privacy Policy
+              プライバシーポリシー
             </Link>
+            に同意したことになります
           </p>
         </div>
       </motion.div>

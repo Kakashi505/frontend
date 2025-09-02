@@ -36,9 +36,9 @@ export function SignUpPage() {
   const [successMessage, setSuccessMessage] = useState('');
 
   const creatorCategories = [
-    'Amateur', 'Married Woman', 'Beautiful Woman', 'Personal Filming',
-    'Large Breasts', 'Home Video', 'Beautiful Breasts', 'Student',
-    'Office Lady', 'Mature', 'Cosplay', 'Fetish', 'Other'
+    'アマチュア', '人妻', '美女', '個人撮影',
+    '巨乳', 'ホームビデオ', '美乳', '学生',
+    'OL', '熟女', 'コスプレ', 'フェチ', 'その他'
   ];
 
   const handleEmailSignUp = async (e: React.FormEvent) => {
@@ -47,9 +47,9 @@ export function SignUpPage() {
     
     try {
       await new Promise(resolve => setTimeout(resolve, 2000));
-      setSuccessMessage('Account created successfully! Please check your email for verification.');
+      setSuccessMessage('アカウントが正常に作成されました！メールで確認してください。');
     } catch (error) {
-      setErrors({ general: 'Sign up failed. Please try again.' });
+      setErrors({ general: 'サインアップに失敗しました。もう一度お試しください。' });
     } finally {
       setIsLoading(false);
     }
@@ -63,9 +63,9 @@ export function SignUpPage() {
       try {
         await new Promise(resolve => setTimeout(resolve, 1000));
         setIsCodeSent(true);
-        setSuccessMessage('Verification code sent to your phone!');
+        setSuccessMessage('認証コードを電話に送信しました！');
       } catch (error) {
-        setErrors({ phoneNumber: 'Failed to send verification code.' });
+        setErrors({ phoneNumber: '認証コードの送信に失敗しました。' });
       } finally {
         setIsLoading(false);
       }
@@ -73,9 +73,9 @@ export function SignUpPage() {
       setIsLoading(true);
       try {
         await new Promise(resolve => setTimeout(resolve, 1000));
-        setSuccessMessage('Phone verification successful! Account created.');
+        setSuccessMessage('電話認証が成功しました！アカウントが作成されました。');
       } catch (error) {
-        setErrors({ verificationCode: 'Invalid verification code.' });
+        setErrors({ verificationCode: '無効な認証コードです。' });
       } finally {
         setIsLoading(false);
       }
@@ -87,9 +87,9 @@ export function SignUpPage() {
     
     try {
       await new Promise(resolve => setTimeout(resolve, 2000));
-      setSuccessMessage('Twitter account connected! Please complete your profile.');
+      setSuccessMessage('Twitterアカウントが接続されました！プロフィールを完成させてください。');
     } catch (error) {
-      setErrors({ general: 'Twitter sign up failed. Please try again.' });
+      setErrors({ general: 'Twitterサインアップに失敗しました。もう一度お試しください。' });
     } finally {
       setIsTwitterLoading(false);
     }

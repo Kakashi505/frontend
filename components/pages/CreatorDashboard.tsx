@@ -63,7 +63,7 @@ const recentSubscribers = [
   {
     id: '1',
     username: 'fan_001',
-    displayName: 'Alex Johnson',
+    displayName: 'アレックス・ジョンソン',
     avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
     plan: 'Premium',
     amount: 980,
@@ -73,7 +73,7 @@ const recentSubscribers = [
   {
     id: '2',
     username: 'fan_002',
-    displayName: 'Sarah Wilson',
+    displayName: 'サラ・ウィルソン',
     avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=400',
     plan: 'VIP',
     amount: 2980,
@@ -83,7 +83,7 @@ const recentSubscribers = [
   {
     id: '3',
     username: 'fan_003',
-    displayName: 'Mike Chen',
+    displayName: 'マイク・チェン',
     avatar: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=400',
     plan: 'Basic',
     amount: 480,
@@ -96,7 +96,7 @@ const uploadQueue = [
   {
     id: '1',
     type: 'video',
-    title: 'Morning workout routine',
+    title: '朝のワークアウトルーティン',
     thumbnail: 'https://images.pexels.com/photos/4056530/pexels-photo-4056530.jpeg?auto=compress&cs=tinysrgb&w=800',
     size: '125MB',
     duration: '15:30',

@@ -12,60 +12,60 @@ import { Input } from '@/components/ui/input';
 const topVideos = [
   { 
     id: '1', 
-    category: 'Popular', 
-    title: 'Most Viewed Content', 
+    category: '人気', 
+    title: '最も視聴されたコンテンツ', 
     views: '2.5M', 
     thumbnail: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=400',
     creator: 'sakura_chan',
     price: 980,
     isPremium: true,
-    genre: 'Amateur',
-    tags: ['popular', 'trending', 'viral']
+    genre: 'アマチュア',
+    tags: ['人気', 'トレンド', 'バイラル']
   },
   { 
     id: '2', 
-    category: 'New', 
-    title: 'Latest Releases', 
+    category: '新着', 
+    title: '最新リリース', 
     views: '890K', 
     thumbnail: 'https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=400',
     creator: 'emma_art',
     price: 500,
     isPremium: false,
-    genre: 'Beautiful Woman',
-    tags: ['new', 'fresh', 'exclusive']
+    genre: '美女',
+    tags: ['新着', 'フレッシュ', 'エクスクルーシブ']
   },
   { 
     id: '3', 
-    category: 'Most Attention', 
-    title: 'Trending Now', 
+    category: '注目', 
+    title: '今話題', 
     views: '1.2M', 
     thumbnail: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=400',
     creator: 'alex_fitness',
     price: 750,
     isPremium: true,
-    genre: 'Personal Filming',
-    tags: ['trending', 'hot', 'attention']
+    genre: '個人撮影',
+    tags: ['トレンド', 'ホット', '注目']
   },
 ];
 
 // Post library data
 const postLibrary = [
-  { id: '1', icon: ShoppingCart, label: 'Purchased', count: 12 },
-  { id: '2', icon: Bookmark, label: 'Saved', count: 45 },
-  { id: '3', icon: Heart, label: 'Liked', count: 89 },
-  { id: '4', icon: Eye, label: 'Viewing History', count: 156 },
+  { id: '1', icon: ShoppingCart, label: '購入済み', count: 12 },
+  { id: '2', icon: Bookmark, label: '保存済み', count: 45 },
+  { id: '3', icon: Heart, label: 'いいね', count: 89 },
+  { id: '4', icon: Eye, label: '視聴履歴', count: 156 },
 ];
 
 // Recommended genres data
 const recommendedGenres = [
-  { id: '1', name: 'Amateur', posts: 410177 },
-  { id: '2', name: 'Married Woman', posts: 104474 },
-  { id: '3', name: 'Pervert', posts: 83925 },
-  { id: '4', name: 'Beautiful Woman', posts: 85989 },
-  { id: '5', name: 'Personal Filming', posts: 147577 },
-  { id: '6', name: 'Large Breasts', posts: 96852 },
-  { id: '7', name: 'Home Video', posts: 72199 },
-  { id: '8', name: 'Beautiful Breasts', posts: 80114 },
+  { id: '1', name: 'アマチュア', posts: 410177 },
+  { id: '2', name: '人妻', posts: 104474 },
+  { id: '3', name: '変態', posts: 83925 },
+  { id: '4', name: '美女', posts: 85989 },
+  { id: '5', name: '個人撮影', posts: 147577 },
+  { id: '6', name: '巨乳', posts: 96852 },
+  { id: '7', name: 'ホームビデオ', posts: 72199 },
+  { id: '8', name: '美乳', posts: 80114 },
 ];
 
 // Ranking posts data
@@ -80,8 +80,8 @@ const rankingPosts = [
       planBadge: 'Premium'
     },
     media: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=400',
-    title: 'Spring Cherry Blossom Session',
-    description: 'Beautiful spring photoshoot in the heart of Tokyo...',
+    title: '春の桜セッション',
+    description: '東京の中心で美しい春の写真撮影...',
     price: '¥100',
     likes: 1234,
     bookmarks: 89,
@@ -98,9 +98,9 @@ const rankingPosts = [
       planBadge: null
     },
     media: 'https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=400',
-    title: 'Advanced Workout Routine',
-    description: 'Complete full-body workout for advanced fitness...',
-    price: 'Free',
+    title: '上級者向けワークアウトルーティン',
+    description: '上級者向けの完全な全身ワークアウト...',
+    price: '無料',
     likes: 892,
     bookmarks: 67,
     isLiked: true,
@@ -116,9 +116,9 @@ const rankingPosts = [
       planBadge: 'VIP'
     },
     media: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=400',
-    title: 'Digital Art Masterclass',
-    description: 'Learn advanced digital painting techniques...',
-    price: 'Plan only',
+    title: 'デジタルアートマスタークラス',
+    description: '高度なデジタルペインティング技術を学ぶ...',
+    price: 'プランのみ',
     likes: 567,
     bookmarks: 34,
     isLiked: false,
@@ -134,8 +134,8 @@ const rankingPosts = [
       planBadge: null
     },
     media: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=400',
-    title: 'Acoustic Guitar Cover',
-    description: 'Beautiful acoustic rendition of classic songs...',
+    title: 'アコースティックギターカバー',
+    description: 'クラシックソングの美しいアコースティック演奏...',
     price: '¥50',
     likes: 2341,
     bookmarks: 156,
@@ -150,25 +150,25 @@ const trendingCreators = [
     id: '1',
     avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400',
     displayName: 'Sakura',
-    briefStats: { followers: '45.6K', posts: 234, category: 'Photography' }
+    briefStats: { followers: '45.6K', posts: 234, category: '写真' }
   },
   {
     id: '2',
     avatar: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=400',
-    displayName: 'Alex Cooper',
-    briefStats: { followers: '32.1K', posts: 189, category: 'Fitness' }
+    displayName: 'アレックス・クーパー',
+    briefStats: { followers: '32.1K', posts: 189, category: 'フィットネス' }
   },
   {
     id: '3',
     avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=400',
-    displayName: 'Emma Rodriguez',
-    briefStats: { followers: '28.9K', posts: 156, category: 'Art' }
+    displayName: 'エマ・ロドリゲス',
+    briefStats: { followers: '28.9K', posts: 156, category: 'アート' }
   },
   {
     id: '4',
     avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
-    displayName: 'Mike Johnson',
-    briefStats: { followers: '52.3K', posts: 312, category: 'Music' }
+    displayName: 'マイク・ジョンソン',
+    briefStats: { followers: '52.3K', posts: 312, category: '音楽' }
   }
 ];
 
@@ -177,24 +177,24 @@ const featuredPosts = [
   {
     id: '1',
     creator: trendingCreators[0],
-    content: 'Just finished an amazing photoshoot in Shibuya! The cherry blossoms are in full bloom 🌸 #photography #japan #spring',
+    content: '渋谷で素晴らしい写真撮影が完了しました！桜が満開です 🌸 #写真 #日本 #春',
     image: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=800',
     likes: 1234,
     views: 5678,
     comments: 89,
     timestamp: Date.now() - 1000 * 60 * 30,
-    category: 'Photography',
+    category: '写真',
   },
   {
     id: '2',
     creator: trendingCreators[1],
-    content: 'New workout routine dropping tomorrow! Who\'s ready to get stronger? 💪 #fitness #workout #motivation',
+    content: '明日新しいワークアウトルーティンを公開します！強くなりたい人はいますか？💪 #フィットネス #ワークアウト #モチベーション',
     image: 'https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=800',
     likes: 892,
     views: 3456,
     comments: 67,
     timestamp: Date.now() - 1000 * 60 * 60,
-    category: 'Fitness',
+    category: 'フィットネス',
   },
   {
     id: '3',
@@ -279,17 +279,17 @@ export function HomePage() {
                   placeholder="Search creators, content, or categories..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-12 py-4 text-lg border-2 border-white/20 bg-white/10 text-white placeholder-white/70 focus:border-white focus:bg-white/20 focus:ring-white/20"
+                  className="pl-12 py-4 text-lg border-2 border-white/20 bg-white/10 text-white placeholder-white/70"
                 />
               </div>
             </div>
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
+              <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-200 px-8 py-3 text-lg font-semibold">
                 Start Exploring
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-3 text-lg font-semibold">
+              <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-200 px-8 py-3 text-lg font-semibold">
                 Become Creator
               </Button>
             </div>
@@ -495,7 +495,7 @@ export function HomePage() {
       {/* Trending Creators Carousel */}
       <section className="px-4 py-12">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Trending Creators</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">{t('ranking.title')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {trendingCreators.map((creator) => (
               <Card key={creator.id} className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center bg-white">
@@ -507,13 +507,13 @@ export function HomePage() {
                   </div>
                   <h3 className="font-bold text-gray-900 mb-2 text-lg">{creator.displayName}</h3>
                   <div className="space-y-1 text-sm text-gray-600 mb-4">
-                    <p>{creator.briefStats.followers} followers</p>
-                    <p>{creator.briefStats.posts} posts</p>
+                    <p>{creator.briefStats.followers} {t('creator.followers')}</p>
+                    <p>{creator.briefStats.posts} {t('creator.posts')}</p>
                     <p className="text-pink-500 font-medium">{creator.briefStats.category}</p>
                   </div>
-                  <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-2 rounded-lg">
-                    Follow
-                  </Button>
+                                      <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-2 rounded-lg">
+                      {t('action.follow')}
+                    </Button>
                 </CardContent>
               </Card>
             ))}
@@ -526,7 +526,7 @@ export function HomePage() {
         <div className="max-w-6xl mx-auto text-center text-white">
           <div className="flex items-center justify-center mb-6">
             <Crown className="w-12 h-12 mr-3" />
-            <h2 className="text-3xl font-bold">Premium Access</h2>
+            <h2 className="text-3xl font-bold">{t('status.premium')} Access</h2>
           </div>
           <p className="text-xl mb-8">Unlock exclusive content and get access to all premium features with our flexible subscription plans.</p>
           
@@ -537,7 +537,7 @@ export function HomePage() {
                 <Lock className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold mb-2">Exclusive Content</h3>
-              <p className="text-white/80">Access to premium videos, photos, and behind-the-scenes content</p>
+              <p className="text-white/80">{t('content.desc.exclusive_content')}</p>
             </div>
             
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
@@ -561,7 +561,7 @@ export function HomePage() {
             <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
               Start Free Trial
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-3 text-lg font-semibold">
+            <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-200 px-8 py-3 text-lg font-semibold">
               View Plans
             </Button>
           </div>
@@ -575,7 +575,7 @@ export function HomePage() {
       {/* Creators Section */}
       <section className="px-4 py-8 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Creators</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">{t('nav.creator')}</h2>
           <div className="space-y-3">
             {trendingCreators.map((creator) => (
               <Card key={creator.id} className="overflow-hidden hover:shadow-md transition-all duration-300 bg-white">
@@ -588,12 +588,12 @@ export function HomePage() {
                       <h3 className="font-medium text-gray-900 mb-1 overflow-hidden text-ellipsis whitespace-nowrap">{creator.displayName}</h3>
                       <p className="text-xs text-gray-500 mb-1">{creator.briefStats.category}</p>
                       <div className="flex items-center space-x-3 text-xs text-gray-500">
-                        <span>{creator.briefStats.followers} followers</span>
-                        <span>{creator.briefStats.posts} posts</span>
+                        <span>{creator.briefStats.followers} {t('creator.followers')}</span>
+                        <span>{creator.briefStats.posts} {t('creator.posts')}</span>
                       </div>
                     </div>
                     <Button size="sm" className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-1 text-sm">
-                      Follow
+                      {t('action.follow')}
                     </Button>
                   </div>
                 </CardContent>

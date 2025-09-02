@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Shield, Users, TrendingUp, AlertTriangle, CheckCircle, XCircle, Eye, Ban, UserCheck, FileText, Video, Image as ImageIcon, Flag, Settings, Download } from 'lucide-react';
+import { useI18n } from '@/contexts/I18nContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -10,6 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('overview');
+  const { t } = useI18n();
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('ja-JP', {
@@ -28,8 +30,8 @@ export function AdminDashboard() {
                 <Shield className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">Admin Dashboard</h1>
-                <p className="text-sm text-gray-600">Platform administration and moderation</p>
+                <h1 className="text-xl font-bold text-gray-900">{t('admin.dashboard')}</h1>
+                <p className="text-sm text-gray-600">{t('admin.platform_administration')}</p>
               </div>
             </div>
           </div>
@@ -45,7 +47,7 @@ export function AdminDashboard() {
                   <Users className="w-6 h-6 text-blue-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Total Users</p>
+                  <p className="text-sm text-gray-600">{t('admin.total_users')}</p>
                   <p className="text-2xl font-bold text-gray-900">15,420</p>
                 </div>
               </div>
@@ -59,7 +61,7 @@ export function AdminDashboard() {
                   <TrendingUp className="w-6 h-6 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Total Revenue</p>
+                  <p className="text-sm text-gray-600">{t('admin.total_revenue')}</p>
                   <p className="text-2xl font-bold text-gray-900">{formatCurrency(12500000)}</p>
                 </div>
               </div>
@@ -73,7 +75,7 @@ export function AdminDashboard() {
                   <AlertTriangle className="w-6 h-6 text-red-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Violations</p>
+                  <p className="text-sm text-gray-600">{t('admin.violations')}</p>
                   <p className="text-2xl font-bold text-gray-900">23</p>
                 </div>
               </div>
@@ -87,7 +89,7 @@ export function AdminDashboard() {
                   <Shield className="w-6 h-6 text-purple-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">System Health</p>
+                  <p className="text-sm text-gray-600">{t('admin.system_health')}</p>
                   <p className="text-2xl font-bold text-gray-900">99.98%</p>
                 </div>
               </div>
@@ -97,36 +99,36 @@ export function AdminDashboard() {
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           <TabsList className="grid w-full grid-cols-6">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="content">Content Review</TabsTrigger>
-            <TabsTrigger value="takedown">Takedown</TabsTrigger>
-            <TabsTrigger value="reports">Reports</TabsTrigger>
-            <TabsTrigger value="kyc">KYC Verification</TabsTrigger>
-            <TabsTrigger value="users">User Management</TabsTrigger>
+            <TabsTrigger value="overview">{t('admin.overview')}</TabsTrigger>
+            <TabsTrigger value="content">{t('admin.content_review')}</TabsTrigger>
+            <TabsTrigger value="takedown">{t('admin.takedown')}</TabsTrigger>
+            <TabsTrigger value="reports">{t('admin.reports')}</TabsTrigger>
+            <TabsTrigger value="kyc">{t('admin.kyc_verification')}</TabsTrigger>
+            <TabsTrigger value="users">{t('admin.user_management')}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Quick Actions</CardTitle>
+                <CardTitle>{t('admin.quick_actions')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 gap-4">
                   <Button variant="outline" className="h-20 flex-col">
                     <Eye className="w-6 h-6 mb-2" />
-                    <span className="text-sm">Review Content</span>
+                    <span className="text-sm">{t('admin.review_content')}</span>
                   </Button>
                   <Button variant="outline" className="h-20 flex-col">
                     <UserCheck className="w-6 h-6 mb-2" />
-                    <span className="text-sm">Verify KYC</span>
+                    <span className="text-sm">{t('admin.verify_kyc')}</span>
                   </Button>
                   <Button variant="outline" className="h-20 flex-col">
                     <Ban className="w-6 h-6 mb-2" />
-                    <span className="text-sm">Ban User</span>
+                    <span className="text-sm">{t('admin.ban_user')}</span>
                   </Button>
                   <Button variant="outline" className="h-20 flex-col">
                     <Flag className="w-6 h-6 mb-2" />
-                    <span className="text-sm">Handle Reports</span>
+                    <span className="text-sm">{t('admin.handle_reports')}</span>
                   </Button>
                 </div>
               </CardContent>
@@ -136,12 +138,12 @@ export function AdminDashboard() {
           <TabsContent value="content" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Content Review Queue</CardTitle>
+                <CardTitle>{t('admin.content_review_queue')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-center py-8 text-gray-500">
                   <Eye className="w-12 h-12 mx-auto mb-4" />
-                  <p>Content review queue will be displayed here</p>
+                  <p>{t('admin.content_review_placeholder')}</p>
                 </div>
               </CardContent>
             </Card>
@@ -150,12 +152,12 @@ export function AdminDashboard() {
           <TabsContent value="takedown" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Takedown Requests</CardTitle>
+                <CardTitle>{t('admin.takedown_requests')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-center py-8 text-gray-500">
                   <Flag className="w-12 h-12 mx-auto mb-4" />
-                  <p>Takedown requests will be displayed here</p>
+                  <p>{t('admin.takedown_placeholder')}</p>
                 </div>
               </CardContent>
             </Card>
@@ -164,12 +166,12 @@ export function AdminDashboard() {
           <TabsContent value="reports" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>User Reports</CardTitle>
+                <CardTitle>{t('admin.user_reports')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-center py-8 text-gray-500">
                   <AlertTriangle className="w-12 h-12 mx-auto mb-4" />
-                  <p>User reports will be displayed here</p>
+                  <p>{t('admin.reports_placeholder')}</p>
                 </div>
               </CardContent>
             </Card>
@@ -178,12 +180,12 @@ export function AdminDashboard() {
           <TabsContent value="kyc" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>KYC & Age Verification</CardTitle>
+                <CardTitle>{t('admin.kyc_age_verification')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-center py-8 text-gray-500">
                   <UserCheck className="w-12 h-12 mx-auto mb-4" />
-                  <p>KYC verifications will be displayed here</p>
+                  <p>{t('admin.kyc_placeholder')}</p>
                 </div>
               </CardContent>
             </Card>
@@ -192,12 +194,12 @@ export function AdminDashboard() {
           <TabsContent value="users" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>User Management</CardTitle>
+                <CardTitle>{t('admin.user_management')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-center py-8 text-gray-500">
                   <Users className="w-12 h-12 mx-auto mb-4" />
-                  <p>User management tools will be displayed here</p>
+                  <p>{t('admin.user_management_placeholder')}</p>
                 </div>
               </CardContent>
             </Card>

@@ -10,13 +10,13 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-const languages = [
-  { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'ja', name: '日本語', flag: '🇯🇵' },
-];
-
 export function LanguageSelector() {
-  const { locale, setLocale } = useI18n();
+  const { locale, setLocale, t } = useI18n();
+
+  const languages = [
+    { code: 'en', name: t('language.english'), flag: '🇺🇸' },
+    { code: 'ja', name: t('language.japanese'), flag: '🇯🇵' },
+  ];
 
   return (
     <DropdownMenu>
