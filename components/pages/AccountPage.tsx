@@ -19,7 +19,7 @@ import {
   AlertTriangle
 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
-import { useI18n } from '@/contexts/I18nContext';
+import { useLocale } from '@/components/providers/LocaleProvider';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -29,7 +29,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 
 export function AccountPage() {
   const { user, logout } = useAuth();
-  const { t, locale, setLocale } = useI18n();
+  const { t, locale, setLocale } = useLocale();
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [messageRejectionEnabled, setMessageRejectionEnabled] = useState(false);
 

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Heart, Eye, MessageCircle, Share2, Star, Search, TrendingUp, Camera, Music, Gamepad2, Palette, Utensils, Dumbbell, BookOpen, Car, Plane, Home, ShoppingBag, ChevronRight, ShoppingCart, Bookmark, Play, Crown, Lock, Megaphone, User } from 'lucide-react';
-import { useI18n } from '@/contexts/I18nContext';
+import { useLocale } from '@/components/providers/LocaleProvider';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -221,7 +221,7 @@ const featuredPosts = [
 ];
 
 export function HomePage() {
-  const { t } = useI18n();
+  const { t } = useLocale();
   const [likedPosts, setLikedPosts] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('All');
@@ -495,7 +495,7 @@ export function HomePage() {
       {/* Trending Creators Carousel */}
       <section className="px-4 py-12">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">{t('ranking.title')}</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">{t('trending', 'post')} Creators</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {trendingCreators.map((creator) => (
               <Card key={creator.id} className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center bg-white">
@@ -507,12 +507,12 @@ export function HomePage() {
                   </div>
                   <h3 className="font-bold text-gray-900 mb-2 text-lg">{creator.displayName}</h3>
                   <div className="space-y-1 text-sm text-gray-600 mb-4">
-                    <p>{creator.briefStats.followers} {t('creator.followers')}</p>
-                    <p>{creator.briefStats.posts} {t('creator.posts')}</p>
+                    <p>{creator.briefStats.followers} {t('followers', 'profile')}</p>
+                    <p>{creator.briefStats.posts} {t('posts', 'profile')}</p>
                     <p className="text-pink-500 font-medium">{creator.briefStats.category}</p>
                   </div>
                                       <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-2 rounded-lg">
-                      {t('action.follow')}
+                      {t('follow', 'post')}
                     </Button>
                 </CardContent>
               </Card>
@@ -575,7 +575,7 @@ export function HomePage() {
       {/* Creators Section */}
       <section className="px-4 py-8 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">{t('nav.creator')}</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">{t('about', 'profile')}</h2>
           <div className="space-y-3">
             {trendingCreators.map((creator) => (
               <Card key={creator.id} className="overflow-hidden hover:shadow-md transition-all duration-300 bg-white">
@@ -588,12 +588,12 @@ export function HomePage() {
                       <h3 className="font-medium text-gray-900 mb-1 overflow-hidden text-ellipsis whitespace-nowrap">{creator.displayName}</h3>
                       <p className="text-xs text-gray-500 mb-1">{creator.briefStats.category}</p>
                       <div className="flex items-center space-x-3 text-xs text-gray-500">
-                        <span>{creator.briefStats.followers} {t('creator.followers')}</span>
-                        <span>{creator.briefStats.posts} {t('creator.posts')}</span>
+                        <span>{creator.briefStats.followers} {t('followers', 'profile')}</span>
+                        <span>{creator.briefStats.posts} {t('posts', 'profile')}</span>
                       </div>
                     </div>
                     <Button size="sm" className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-1 text-sm">
-                      {t('action.follow')}
+                      {t('follow', 'post')}
                     </Button>
                   </div>
                 </CardContent>

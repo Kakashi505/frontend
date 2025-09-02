@@ -5,7 +5,7 @@ import { Search, Send, Paperclip, Smile, MoreVertical } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { useI18n } from '@/contexts/I18nContext';
+import { useLocale } from '@/components/providers/LocaleProvider';
 
 const conversations = [
   {
@@ -86,7 +86,7 @@ const messages = [
 ];
 
 export function MessagesPage() {
-  const { t } = useI18n();
+  const { t } = useLocale();
   const [selectedConversation, setSelectedConversation] = useState(conversations[0]);
   const [newMessage, setNewMessage] = useState('');
   const [searchQuery, setSearchQuery] = useState('');

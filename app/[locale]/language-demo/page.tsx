@@ -1,4 +1,4 @@
-import { I18nUsageExample } from '@/components/examples/I18nUsageExample';
+import { AppRouterDemoPage } from '@/components/demos/AppRouterDemoPage';
 
 export default function LanguageDemoPage() {
   return (
@@ -13,7 +13,7 @@ export default function LanguageDemoPage() {
           </p>
         </div>
         
-        <I18nUsageExample />
+        <AppRouterDemoPage />
         
         <div className="mt-8 p-6 bg-white rounded-lg shadow-md">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">

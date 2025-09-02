@@ -3,20 +3,20 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Home, Users, Trophy, MessageCircle, User } from 'lucide-react';
-import { useI18n } from '@/contexts/I18nContext';
+import { useLocale } from '@/components/providers/LocaleProvider';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { href: '/', icon: Home, key: 'nav.home' },
-  { href: '/feed', icon: Users, key: 'nav.feed' },
-  { href: '/ranking', icon: Trophy, key: 'nav.ranking' },
-  { href: '/messages', icon: MessageCircle, key: 'nav.messages' },
-  { href: '/account', icon: User, key: 'nav.account' },
+  { href: '/', icon: Home, key: 'home' },
+  { href: '/feed', icon: Users, key: 'feed' },
+  { href: '/ranking', icon: Trophy, key: 'ranking' },
+  { href: '/messages', icon: MessageCircle, key: 'messages' },
+  { href: '/account', icon: User, key: 'account' },
 ];
 
 export function BottomNavigation() {
   const pathname = usePathname();
-  const { t } = useI18n();
+  const { t } = useLocale();
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-t border-purple-100 shadow-lg">
@@ -36,7 +36,7 @@ export function BottomNavigation() {
                 )}
               >
                 <Icon className={cn('w-5 h-5', isActive && 'scale-110')} />
-                <span className="text-xs font-medium">{t(key)}</span>
+                <span className="text-xs font-medium">{t(key, 'navbar')}</span>
               </Link>
             );
           })}

@@ -3,17 +3,17 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Search, Bell, Globe, Heart } from 'lucide-react';
-import { useI18n } from '@/contexts/I18nContext';
+import { useLocale } from '@/components/providers/LocaleProvider';
 import { useNotifications } from '@/contexts/NotificationContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { NotificationDropdown } from '@/components/notifications/NotificationDropdown';
-import { LanguageSelector } from '@/components/ui/LanguageSelector';
+import { AppRouterLanguageSwitcher } from '@/components/ui/AppRouterLanguageSwitcher';
 
 export function Header() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showNotifications, setShowNotifications] = useState(false);
-  const { t } = useI18n();
+  const { t } = useLocale();
   const { unreadCount } = useNotifications();
 
   return (
@@ -23,7 +23,7 @@ export function Header() {
         <div className="flex items-center space-x-2">
           <Image
             src="/assets/logo.png"
-            alt={t('nav.home')}
+            alt={t('home', 'navbar')}
             width={128}
             height={64}
             className="w-32 h-16 object-contain"
@@ -36,7 +36,7 @@ export function Header() {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
             <Input
               type="text"
-              placeholder={t('search.placeholder')}
+              placeholder={t('search_placeholder', 'navbar')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10 bg-gray-50/50 border-gray-200 focus:border-purple-300 focus:ring-purple-200"
@@ -46,7 +46,7 @@ export function Header() {
 
         {/* Right Section */}
         <div className="flex items-center space-x-4">
-          <LanguageSelector />
+          <AppRouterLanguageSwitcher />
           
           <div className="relative">
             <Button
