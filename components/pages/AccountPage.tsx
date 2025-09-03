@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { 
   Settings, 
   Globe, 
@@ -28,6 +29,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 export function AccountPage() {
+  const router = useRouter();
   const { user, logout } = useAuth();
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [messageRejectionEnabled, setMessageRejectionEnabled] = useState(false);
@@ -225,7 +227,10 @@ export function AccountPage() {
         <Card>
           <CardContent className="p-0">
             <div className="space-y-0">
-              <div className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors cursor-pointer border-b border-gray-100">
+              <div 
+                className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors cursor-pointer border-b border-gray-100"
+                onClick={() => router.push('/terms')}
+              >
                 <span className="text-gray-900">Terms of Use</span>
                 <ChevronRight className="w-4 h-4 text-gray-400" />
               </div>

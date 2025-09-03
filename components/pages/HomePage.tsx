@@ -1,12 +1,40 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Heart, Eye, MessageCircle, Share2, Star, Search, TrendingUp, Camera, Music, Gamepad2, Palette, Utensils, Dumbbell, BookOpen, Car, Plane, Home, ShoppingBag, ChevronRight, ShoppingCart, Bookmark, Play, Crown, Lock, Megaphone, User, Users } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+
+// Custom CSS animations for the hero section
+const heroStyles = `
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .animate-fade-in-delay {
+    animation: fadeIn 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+  
+  .animate-fade-in-delay-2 {
+    animation: fadeIn 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+  
+  .animate-fade-in-delay-3 {
+    animation: fadeIn 0.8s ease-out 0.6s forwards;
+    opacity: 0;
+  }
+`;
 
 // Enhanced top videos data with OnlyU.jp features
 const topVideos = [
@@ -221,6 +249,7 @@ const featuredPosts = [
 ];
 
 export function HomePage() {
+  const router = useRouter();
   const [likedPosts, setLikedPosts] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('All');
@@ -260,39 +289,62 @@ export function HomePage() {
     return `${days}d ago`;
   };
 
+  const handleStartExploring = () => {
+    router.push('/explore');
+  };
+
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <style jsx>{heroStyles}</style>
+      <div className="min-h-screen bg-white">
       {/* Hero Section with Search & CTA */}
-      <section className="relative bg-gradient-to-br from-purple-600 via-pink-600 to-indigo-600 text-white py-16 px-4">
-        <div className="max-w-6xl mx-auto">
+      <section className="relative bg-gradient-to-br from-purple-600 via-pink-600 to-indigo-600 text-white py-16 px-4 overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-32 h-32 border-2 border-white rounded-full"></div>
+          <div className="absolute bottom-10 right-10 w-24 h-24 border border-white rounded-full"></div>
+          <div className="absolute top-1/2 left-1/4 w-16 h-16 border border-white rounded-full"></div>
+        </div>
+        
+        <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              Welcome to <span className="text-yellow-300">Only-U</span>
+            <h1 
+              className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in cursor-pointer hover:scale-105 transition-transform duration-200"
+              onClick={() => router.push('/')}
+            >
+              Welcome to <span className="text-yellow-300 drop-shadow-lg">Only-U</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90">
+            <p className="text-xl md:text-2xl mb-8 text-white/90 animate-fade-in-delay">
               Connect with your favorite creators and discover exclusive content
             </p>
             
             {/* Search Bar */}
-            <div className="max-w-2xl mx-auto mb-8">
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <div className="max-w-2xl mx-auto mb-8 animate-fade-in-delay-2">
+              <div className="relative group">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white w-5 h-5 group-focus-within:text-purple-300 transition-colors duration-200" />
                 <Input
                   type="text"
                   placeholder="Search creators, content, or categories..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-12 py-4 text-lg border-2 border-white/20 bg-white/10 text-white placeholder-white/70"
+                  className="pl-12 py-4 text-lg border-2 border-white/30 bg-white/20 text-white placeholder-white/60 focus:border-white/50 focus:bg-white/30 focus:outline-none focus:ring-4 focus:ring-white/20 rounded-xl backdrop-blur-sm transition-all duration-200 hover:bg-white/25"
                 />
               </div>
             </div>
             
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-200 px-8 py-3 text-lg font-semibold">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay-3">
+              <Button 
+                size="lg" 
+                className="bg-white text-purple-600 hover:bg-gray-100 active:bg-gray-200 px-8 py-3 text-lg font-semibold cursor-pointer shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-200 rounded-xl border-0"
+                onClick={handleStartExploring}
+              >
                 Start Exploring
               </Button>
-              <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-200 px-8 py-3 text-lg font-semibold">
+              <Button 
+                size="lg" 
+                className="bg-transparent text-white border-2 border-white/50 hover:bg-white/10 hover:border-white px-8 py-3 text-lg font-semibold cursor-pointer shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-200 rounded-xl backdrop-blur-sm"
+              >
                 Become Creator
               </Button>
             </div>
@@ -1254,5 +1306,6 @@ export function HomePage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

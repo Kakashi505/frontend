@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Search, Bell, Globe, Heart } from 'lucide-react';
 import { useNotifications } from '@/contexts/NotificationContext';
@@ -9,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { NotificationDropdown } from '@/components/notifications/NotificationDropdown';
 
 export function Header() {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [showNotifications, setShowNotifications] = useState(false);
   const { unreadCount } = useNotifications();
@@ -21,7 +23,8 @@ export function Header() {
           <img
             src="/logo.png"
             alt="OnlyU"
-            className="h-12 w-auto object-contain"
+            className="h-12 w-auto object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
+            onClick={() => router.push('/')}
           />
         </div>
 
