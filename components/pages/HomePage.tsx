@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Heart, Eye, MessageCircle, Share2, Star, Search, TrendingUp, Camera, Music, Gamepad2, Palette, Utensils, Dumbbell, BookOpen, Car, Plane, Home, ShoppingBag, ChevronRight, ShoppingCart, Bookmark, Play, Crown, Lock, Megaphone, User } from 'lucide-react';
+import { Heart, Eye, MessageCircle, Share2, Star, Search, TrendingUp, Camera, Music, Gamepad2, Palette, Utensils, Dumbbell, BookOpen, Car, Plane, Home, ShoppingBag, ChevronRight, ShoppingCart, Bookmark, Play, Crown, Lock, Megaphone, User, Users } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -73,16 +73,16 @@ const rankingPosts = [
   {
     id: '1',
     creator: {
-      avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400',
+      avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600',
       handle: '@sakura_chan',
       displayName: 'Sakura',
       isSubscribed: true,
       planBadge: 'Premium'
     },
-    media: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=400',
-    title: '春の桜セッション',
-    description: '東京の中心で美しい春の写真撮影...',
-    price: '¥100',
+    media: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=600',
+    title: 'Spring Cherry Blossom Session',
+    description: 'Beautiful spring photography session in the heart of Tokyo...',
+    price: '$10',
     likes: 1234,
     bookmarks: 89,
     isLiked: false,
@@ -91,16 +91,16 @@ const rankingPosts = [
   {
     id: '2',
     creator: {
-      avatar: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=400',
+      avatar: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600',
       handle: '@alex_fitness',
       displayName: 'Alex Cooper',
       isSubscribed: false,
       planBadge: null
     },
-    media: 'https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=400',
-    title: '上級者向けワークアウトルーティン',
-    description: '上級者向けの完全な全身ワークアウト...',
-    price: '無料',
+    media: 'https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=600',
+    title: 'Advanced Workout Routine',
+    description: 'Complete full-body workout for advanced fitness enthusiasts...',
+    price: 'Free',
     likes: 892,
     bookmarks: 67,
     isLiked: true,
@@ -109,16 +109,16 @@ const rankingPosts = [
   {
     id: '3',
     creator: {
-      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=400',
+      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600',
       handle: '@emma_art',
       displayName: 'Emma Rodriguez',
       isSubscribed: true,
       planBadge: 'VIP'
     },
-    media: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=400',
-    title: 'デジタルアートマスタークラス',
-    description: '高度なデジタルペインティング技術を学ぶ...',
-    price: 'プランのみ',
+    media: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=600',
+    title: 'Digital Art Masterclass',
+    description: 'Learn advanced digital painting techniques and creative workflows...',
+    price: 'Plan Only',
     likes: 567,
     bookmarks: 34,
     isLiked: false,
@@ -127,16 +127,16 @@ const rankingPosts = [
   {
     id: '4',
     creator: {
-      avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
+      avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600',
       handle: '@mike_music',
       displayName: 'Mike Johnson',
       isSubscribed: false,
       planBadge: null
     },
-    media: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=400',
-    title: 'アコースティックギターカバー',
-    description: 'クラシックソングの美しいアコースティック演奏...',
-    price: '¥50',
+    media: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=600',
+    title: 'Acoustic Guitar Covers',
+    description: 'Beautiful acoustic renditions of classic songs with detailed tutorials...',
+    price: '$5',
     likes: 2341,
     bookmarks: 156,
     isLiked: true,
@@ -225,6 +225,9 @@ export function HomePage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('All');
   const [bookmarkedPosts, setBookmarkedPosts] = useState<string[]>([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentVideoSlide, setCurrentVideoSlide] = useState(0);
+  const [currentCreatorSlide, setCurrentCreatorSlide] = useState(0);
 
   const tabs = ['All', 'Popular', 'Premium', 'Live'];
 
@@ -296,11 +299,13 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Top Videos Carousel */}
+      {/* Top Videos Section */}
       <section className="px-4 py-12">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Top Videos</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          {/* Desktop: Grid Layout */}
+          <div className="hidden md:grid md:grid-cols-3 gap-6">
             {topVideos.map((video) => (
               <Card key={video.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                 <CardContent className="p-0">
@@ -332,6 +337,88 @@ export function HomePage() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Mobile: Slideshow */}
+          <div className="md:hidden">
+            <div className="relative">
+              {/* Slideshow Container */}
+              <div className="overflow-hidden">
+                <div 
+                  className="flex transition-transform duration-300 ease-in-out"
+                  style={{ transform: `translateX(-${currentVideoSlide * 100}%)` }}
+                >
+                  {topVideos.map((video) => (
+                    <div key={video.id} className="w-full flex-shrink-0 px-2">
+                      <Card className="overflow-hidden hover:shadow-lg transition-all duration-300">
+                        <CardContent className="p-0">
+                          <div className="relative">
+                            <Image
+                              src={video.thumbnail}
+                              alt={video.title}
+                              width={400}
+                              height={250}
+                              className="w-full h-48 object-cover"
+                            />
+                            <div className="absolute top-3 left-3">
+                              <span className="bg-pink-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                                {video.category}
+                              </span>
+                            </div>
+                            <div className="absolute top-3 right-3">
+                              <div className="bg-black/50 text-white text-xs px-2 py-1 rounded">
+                                {video.views}
+                              </div>
+                            </div>
+                            <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                              <Play className="w-16 h-16 text-white" />
+                            </div>
+                          </div>
+                          <div className="p-4">
+                            <h3 className="font-semibold text-gray-900 mb-2">{video.title}</h3>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Navigation Arrows */}
+              <button
+                onClick={() => setCurrentVideoSlide(prev => prev === 0 ? topVideos.length - 1 : prev - 1)}
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg backdrop-blur-sm transition-all duration-200 hover:scale-110"
+                aria-label="Previous video"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              
+              <button
+                onClick={() => setCurrentVideoSlide(prev => prev === topVideos.length - 1 ? 0 : prev + 1)}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg backdrop-blur-sm transition-all duration-200 hover:scale-110"
+                aria-label="Next video"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+              
+              {/* Dots Indicator */}
+              <div className="flex justify-center space-x-2 mt-4">
+                {topVideos.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentVideoSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                      index === currentVideoSlide ? 'bg-pink-500 w-6' : 'bg-gray-300'
+                    }`}
+                    aria-label={`Go to video ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -401,22 +488,24 @@ export function HomePage() {
             ))}
           </div>
           
-          {/* Post Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {/* Desktop: Post Cards Grid - Two Columns */}
+          <div className="hidden md:grid md:grid-cols-2 gap-8">
             {rankingPosts.map((post) => (
               <Card key={post.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-white">
                 <CardContent className="p-0">
                   {/* Creator Info */}
-                  <div className="p-4 pb-2">
-                    <div className="flex items-center space-x-3 mb-2">
-                      <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
-                        <span className="text-gray-500 text-sm">👤</span>
-                      </div>
+                  <div className="p-6 pb-4">
+                    <div className="flex items-center space-x-4 mb-3">
+                      <img 
+                        src={post.creator.avatar} 
+                        alt={post.creator.displayName}
+                        className="w-14 h-14 rounded-full object-cover"
+                      />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center space-x-2">
-                          <p className="font-medium text-gray-900 overflow-hidden text-ellipsis whitespace-nowrap">{post.creator.displayName}</p>
+                          <p className="font-semibold text-lg text-gray-900 overflow-hidden text-ellipsis whitespace-nowrap">{post.creator.displayName}</p>
                           {post.creator.planBadge && (
-                            <span className={`text-xs px-2 py-1 rounded-full font-medium ${
+                            <span className={`text-sm px-3 py-1 rounded-full font-medium ${
                               post.creator.planBadge === 'Premium' 
                                 ? 'bg-pink-500 text-white'
                                 : 'bg-purple-500 text-white'
@@ -425,21 +514,23 @@ export function HomePage() {
                             </span>
                           )}
                         </div>
-                        <p className="text-xs text-gray-500 overflow-hidden text-ellipsis whitespace-nowrap">{post.creator.handle}</p>
+                        <p className="text-sm text-gray-500 overflow-hidden text-ellipsis whitespace-nowrap">{post.creator.handle}</p>
                       </div>
                     </div>
                   </div>
                   
                   {/* Media Thumbnail */}
                   <div className="relative">
-                    <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
-                      <span className="text-gray-500 text-lg">📷</span>
-                    </div>
-                    <div className="absolute top-3 right-3">
-                      <span className={`text-xs px-2 py-1 rounded font-medium ${
+                    <img 
+                      src={post.media} 
+                      alt={post.title}
+                      className="w-full h-64 object-cover"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <span className={`text-sm px-3 py-1 rounded-full font-medium ${
                         post.price === 'Free' 
                           ? 'bg-green-500 text-white' 
-                          : post.price === 'Plan only'
+                          : post.price === 'Plan Only'
                           ? 'bg-purple-500 text-white'
                           : 'bg-pink-500 text-white'
                       }`}>
@@ -449,38 +540,38 @@ export function HomePage() {
                   </div>
                   
                   {/* Content Info */}
-                  <div className="p-4">
-                    <h3 className="font-semibold text-gray-900 mb-2 overflow-hidden text-ellipsis whitespace-nowrap">{post.title}</h3>
-                    <p className="text-sm text-gray-600 mb-3 overflow-hidden text-ellipsis whitespace-nowrap">{post.description}</p>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 overflow-hidden text-ellipsis whitespace-nowrap">{post.title}</h3>
+                    <p className="text-base text-gray-600 mb-4 overflow-hidden text-ellipsis whitespace-nowrap">{post.description}</p>
                     
                     {/* Action Buttons */}
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-6">
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => toggleLike(post.id)}
-                        className={`flex items-center space-x-1 ${
+                        className={`flex items-center space-x-2 ${
                           post.isLiked ? 'text-red-500' : 'text-gray-600'
                         } hover:text-red-500`}
                       >
-                        <Heart className={`w-4 h-4 ${post.isLiked ? 'fill-current' : ''}`} />
-                        <span className="text-xs">{post.likes}</span>
+                        <Heart className={`w-5 h-5 ${post.isLiked ? 'fill-current' : ''}`} />
+                        <span className="text-sm font-medium">{post.likes}</span>
                       </Button>
                       
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => toggleBookmark(post.id)}
-                        className={`flex items-center space-x-1 ${
+                        className={`flex items-center space-x-2 ${
                           post.isBookmarked ? 'text-blue-500' : 'text-gray-600'
                         } hover:text-blue-500`}
                       >
-                        <Bookmark className={`w-4 h-4 ${post.isBookmarked ? 'fill-current' : ''}`} />
-                        <span className="text-xs">{post.bookmarks}</span>
+                        <Bookmark className={`w-5 h-5 ${post.isBookmarked ? 'fill-current' : ''}`} />
+                        <span className="text-sm font-medium">{post.bookmarks}</span>
                       </Button>
                       
                       <Button variant="ghost" size="sm" className="text-gray-600 hover:text-purple-500">
-                        <MessageCircle className="w-4 h-4" />
+                        <MessageCircle className="w-5 h-5" />
                       </Button>
                     </div>
                   </div>
@@ -488,34 +579,318 @@ export function HomePage() {
               </Card>
             ))}
           </div>
+
+          {/* Mobile: Slideshow of Ranking Posts */}
+          <div className="md:hidden">
+            <div className="relative">
+              {/* Slideshow Container */}
+              <div className="overflow-hidden">
+                <div 
+                  className="flex transition-transform duration-300 ease-in-out"
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                >
+                  {rankingPosts.map((post) => (
+                    <div key={post.id} className="w-full flex-shrink-0 px-2">
+                      <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 bg-white">
+                        <CardContent className="p-0">
+                          {/* Creator Info */}
+                          <div className="p-4 pb-2">
+                            <div className="flex items-center space-x-3 mb-2">
+                              <img 
+                                src={post.creator.avatar} 
+                                alt={post.creator.displayName}
+                                className="w-10 h-10 rounded-full object-cover"
+                              />
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center space-x-2">
+                                  <p className="font-medium text-gray-900 overflow-hidden text-ellipsis whitespace-nowrap">{post.creator.displayName}</p>
+                                  {post.creator.planBadge && (
+                                    <span className={`text-xs px-2 py-1 rounded-full font-medium ${
+                                      post.creator.planBadge === 'Premium' 
+                                        ? 'bg-pink-500 text-white'
+                                        : 'bg-purple-500 text-white'
+                                    }`}>
+                                      {post.creator.planBadge}
+                                    </span>
+                                  )}
+                                </div>
+                                <p className="text-xs text-gray-500 overflow-hidden text-ellipsis whitespace-nowrap">{post.creator.handle}</p>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          {/* Media Thumbnail */}
+                          <div className="relative">
+                            <img 
+                              src={post.media} 
+                              alt={post.title}
+                              className="w-full h-40 object-cover"
+                            />
+                            <div className="absolute top-3 right-3">
+                              <span className={`text-xs px-2 py-1 rounded font-medium ${
+                                post.price === 'Free' 
+                                  ? 'bg-green-500 text-white' 
+                                  : post.price === 'Plan Only'
+                                  ? 'bg-purple-500 text-white'
+                                  : 'bg-pink-500 text-white'
+                              }`}>
+                                {post.price}
+                              </span>
+                            </div>
+                          </div>
+                          
+                          {/* Content Info */}
+                          <div className="p-4">
+                            <h3 className="font-semibold text-gray-900 mb-2 overflow-hidden text-ellipsis whitespace-nowrap">{post.title}</h3>
+                            <p className="text-sm text-gray-600 mb-3 overflow-hidden text-ellipsis whitespace-nowrap">{post.description}</p>
+                            
+                            {/* Action Buttons */}
+                            <div className="flex items-center space-x-4">
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => toggleLike(post.id)}
+                                className={`flex items-center space-x-1 ${
+                                  post.isLiked ? 'text-red-500' : 'text-gray-600'
+                                } hover:text-red-500`}
+                              >
+                                <Heart className={`w-4 h-4 ${post.isLiked ? 'fill-current' : ''}`} />
+                                <span className="text-xs">{post.likes}</span>
+                              </Button>
+                              
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => toggleBookmark(post.id)}
+                                className={`flex items-center space-x-1 ${
+                                  post.isBookmarked ? 'text-blue-500' : 'text-gray-600'
+                                } hover:text-blue-500`}
+                              >
+                                <Bookmark className={`w-4 h-4 ${post.isBookmarked ? 'fill-current' : ''}`} />
+                                <span className="text-xs">{post.bookmarks}</span>
+                              </Button>
+                              
+                              <Button variant="ghost" size="sm" className="text-gray-600 hover:text-purple-500">
+                                <MessageCircle className="w-4 h-4" />
+                              </Button>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Navigation Arrows */}
+              <button
+                onClick={() => setCurrentSlide(prev => prev === 0 ? rankingPosts.length - 1 : prev - 1)}
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg backdrop-blur-sm transition-all duration-200 hover:scale-110"
+                aria-label="Previous post"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              
+              <button
+                onClick={() => setCurrentSlide(prev => prev === rankingPosts.length - 1 ? 0 : prev + 1)}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg backdrop-blur-sm transition-all duration-200 hover:scale-110"
+                aria-label="Next post"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+              
+              {/* Dots Indicator */}
+              <div className="flex justify-center space-x-2 mt-4">
+                {rankingPosts.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                      index === currentSlide ? 'bg-pink-500 w-6' : 'bg-gray-300'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Trending Creators Carousel */}
-      <section className="px-4 py-12">
+      {/* Trending Creators Section */}
+      <section className="px-4 py-16 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Trending Creators</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Trending Creators</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Discover and connect with the most popular creators on our platform</p>
+          </div>
+          
+          {/* Desktop: Enhanced Grid Layout */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {trendingCreators.map((creator) => (
-              <Card key={creator.id} className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center bg-white">
-                <CardContent className="p-6">
-                  <div className="mb-4">
-                    <div className="w-20 h-20 bg-gray-200 rounded-full mx-auto flex items-center justify-center">
-                      <span className="text-gray-500 text-2xl">👤</span>
+              <Card key={creator.id} className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 text-center bg-white border-0 shadow-lg">
+                <CardContent className="p-0">
+                  {/* Background Pattern */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Avatar Section */}
+                  <div className="relative p-8 pb-6">
+                    <div className="relative mx-auto mb-4">
+                      <div className="w-24 h-24 rounded-full p-1 bg-gradient-to-r from-purple-500 to-pink-500 group-hover:scale-110 transition-transform duration-500">
+                        <img 
+                          src={creator.avatar} 
+                          alt={creator.displayName}
+                          className="w-full h-full rounded-full object-cover"
+                        />
+                      </div>
+                      {/* Online Status Indicator */}
+                      <div className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 rounded-full border-2 border-white shadow-lg"></div>
                     </div>
+                    
+                    {/* Creator Name */}
+                    <h3 className="font-bold text-xl text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-300">
+                      {creator.displayName}
+                    </h3>
+                    
+                    {/* Category Badge */}
+                    <span className="inline-block px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-medium rounded-full shadow-md">
+                      {creator.briefStats.category}
+                    </span>
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-2 text-lg">{creator.displayName}</h3>
-                  <div className="space-y-1 text-sm text-gray-600 mb-4">
-                                      <p>{creator.briefStats.followers} followers</p>
-                  <p>{creator.briefStats.posts} posts</p>
-                    <p className="text-pink-500 font-medium">{creator.briefStats.category}</p>
-                  </div>
-                                      <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-2 rounded-lg">
-                      Follow
+                  
+                  {/* Stats Section */}
+                  <div className="px-6 pb-6">
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                      <div className="text-center p-3 bg-gray-50 rounded-lg group-hover:bg-purple-50 transition-colors duration-300">
+                        <div className="text-2xl font-bold text-gray-900">{creator.briefStats.followers}</div>
+                        <div className="text-xs text-gray-600 uppercase tracking-wide">Followers</div>
+                      </div>
+                      <div className="text-center p-3 bg-gray-50 rounded-lg group-hover:bg-pink-50 transition-colors duration-300">
+                        <div className="text-2xl font-bold text-gray-900">{creator.briefStats.posts}</div>
+                        <div className="text-xs text-gray-600 uppercase tracking-wide">Posts</div>
+                      </div>
+                    </div>
+                    
+                    {/* Follow Button */}
+                    <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                      <User className="w-4 h-4 mr-2" />
+                      Follow Creator
                     </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Mobile: Compact Slideshow */}
+          <div className="md:hidden">
+            <div className="relative">
+              {/* Slideshow Container */}
+              <div className="overflow-hidden rounded-xl">
+                <div 
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentCreatorSlide * 100}%)` }}
+                >
+                  {trendingCreators.map((creator) => (
+                    <div key={creator.id} className="w-full flex-shrink-0 px-3">
+                      <Card className="overflow-hidden bg-white border-0 shadow-lg">
+                        <CardContent className="p-0">
+                          {/* Compact Hero Section */}
+                          <div className="relative bg-gradient-to-br from-purple-500 to-pink-600 p-4 text-center text-white">
+                            {/* Avatar */}
+                            <div className="relative mx-auto mb-3">
+                              <div className="w-16 h-16 rounded-full p-1 bg-white/20 backdrop-blur-sm mx-auto">
+                                <img 
+                                  src={creator.avatar} 
+                                  alt={creator.displayName}
+                                  className="w-full h-full rounded-full object-cover"
+                                />
+                              </div>
+                              {/* Online Status */}
+                              <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-white shadow-sm"></div>
+                            </div>
+                            
+                            {/* Creator Info */}
+                            <h3 className="text-lg font-bold mb-2 truncate px-2">{creator.displayName}</h3>
+                            <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full border border-white/30 truncate max-w-full">
+                              {creator.briefStats.category}
+                            </span>
+                          </div>
+                          
+                          {/* Compact Stats and Actions */}
+                          <div className="p-4">
+                            {/* Stats Grid */}
+                            <div className="grid grid-cols-2 gap-3 mb-4">
+                              <div className="text-center p-3 bg-purple-50 rounded-lg">
+                                <div className="text-lg font-bold text-purple-600 truncate">{creator.briefStats.followers}</div>
+                                <div className="text-xs text-purple-500 uppercase tracking-wide font-medium">Followers</div>
+                              </div>
+                              <div className="text-center p-3 bg-pink-50 rounded-lg">
+                                <div className="text-lg font-bold text-pink-600 truncate">{creator.briefStats.posts}</div>
+                                <div className="text-xs text-pink-500 uppercase tracking-wide font-medium">Posts</div>
+                              </div>
+                            </div>
+                            
+                            {/* Action Buttons */}
+                            <div className="space-y-2">
+                              <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-sm">
+                                <User className="w-3 h-3 mr-2" />
+                                Follow
+                              </Button>
+                              <Button variant="outline" className="w-full border-purple-200 text-purple-600 hover:bg-purple-50 font-medium py-2 rounded-lg transition-all duration-300 text-sm">
+                                <MessageCircle className="w-3 h-3 mr-2" />
+                                Message
+                              </Button>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Navigation Arrows */}
+              <button
+                onClick={() => setCurrentCreatorSlide(prev => prev === 0 ? trendingCreators.length - 1 : prev - 1)}
+                className="absolute left-1 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-purple-600 p-2 rounded-full shadow-lg backdrop-blur-sm transition-all duration-200 hover:scale-110 border border-purple-100"
+                aria-label="Previous creator"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              
+              <button
+                onClick={() => setCurrentCreatorSlide(prev => prev === trendingCreators.length - 1 ? 0 : prev + 1)}
+                className="absolute right-1 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-purple-600 p-2 rounded-full shadow-lg backdrop-blur-sm transition-all duration-200 hover:scale-110 border border-purple-100"
+                aria-label="Next creator"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+              
+              {/* Compact Dots Indicator */}
+              <div className="flex justify-center space-x-2 mt-4">
+                {trendingCreators.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentCreatorSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentCreatorSlide 
+                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 w-6 shadow-md' 
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    aria-label={`Go to creator ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -572,32 +947,189 @@ export function HomePage() {
       </section>
 
       {/* Creators Section */}
-      <section className="px-4 py-8 bg-gray-50">
+      <section className="px-4 py-12 bg-gradient-to-br from-gray-50 via-white to-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Creators</h2>
-          <div className="space-y-3">
-            {trendingCreators.map((creator) => (
-              <Card key={creator.id} className="overflow-hidden hover:shadow-md transition-all duration-300 bg-white">
-                <CardContent className="p-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-                      <span className="text-gray-500 text-sm">👤</span>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-medium text-gray-900 mb-1 overflow-hidden text-ellipsis whitespace-nowrap">{creator.displayName}</h3>
-                      <p className="text-xs text-gray-500 mb-1">{creator.briefStats.category}</p>
-                      <div className="flex items-center space-x-3 text-xs text-gray-500">
-                        <span>{creator.briefStats.followers} followers</span>
-                        <span>{creator.briefStats.posts} posts</span>
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Discover Creators</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Connect with amazing creators and explore their exclusive content</p>
+          </div>
+          
+          {/* Desktop: Enhanced List Layout */}
+          <div className="hidden md:block">
+            <div className="space-y-4">
+              {trendingCreators.map((creator) => (
+                <Card key={creator.id} className="group overflow-hidden hover:shadow-xl transition-all duration-500 hover:-translate-y-1 bg-white border-0 shadow-md">
+                  <CardContent className="p-6">
+                    <div className="flex items-center space-x-4">
+                      {/* Enhanced Avatar */}
+                      <div className="relative">
+                        <div className="w-16 h-16 rounded-full p-1 bg-gradient-to-r from-purple-500 to-pink-500 group-hover:scale-110 transition-transform duration-300">
+                          <img 
+                            src={creator.avatar} 
+                            alt={creator.displayName}
+                            className="w-full h-full rounded-full object-cover"
+                          />
+                        </div>
+                        {/* Online Status */}
+                        <div className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border-2 border-white shadow-md"></div>
+                      </div>
+                      
+                      {/* Creator Info */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center space-x-3 mb-2">
+                          <h3 className="font-bold text-xl text-gray-900 group-hover:text-purple-600 transition-colors duration-300">
+                            {creator.displayName}
+                          </h3>
+                          <span className="px-3 py-1 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 text-sm font-medium rounded-full border border-purple-200">
+                            {creator.briefStats.category}
+                          </span>
+                        </div>
+                        <div className="flex items-center space-x-6 text-sm text-gray-600">
+                          <div className="flex items-center space-x-2">
+                            <Users className="w-4 h-4 text-purple-500" />
+                            <span className="font-medium">{creator.briefStats.followers} followers</span>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <Camera className="w-4 h-4 text-pink-500" />
+                            <span className="font-medium">{creator.briefStats.posts} posts</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Enhanced Action Buttons */}
+                      <div className="flex items-center space-x-3">
+                        <Button size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                          <User className="w-4 h-4 mr-2" />
+                          Follow
+                        </Button>
+                        <Button variant="outline" size="lg" className="border-purple-200 text-purple-600 hover:bg-purple-50 font-medium px-4 py-2 rounded-xl transition-all duration-300">
+                          <MessageCircle className="w-4 h-4" />
+                        </Button>
                       </div>
                     </div>
-                    <Button size="sm" className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-1 text-sm">
-                      Follow
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile: Beautiful Slideshow */}
+          <div className="md:hidden">
+            <div className="relative">
+              {/* Slideshow Container */}
+              <div className="overflow-hidden rounded-2xl">
+                <div 
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentCreatorSlide * 100}%)` }}
+                >
+                  {trendingCreators.map((creator) => (
+                    <div key={creator.id} className="w-full flex-shrink-0 px-3">
+                      <Card className="overflow-hidden bg-white border-0 shadow-xl">
+                        <CardContent className="p-0">
+                          {/* Hero Section */}
+                          <div className="relative bg-gradient-to-br from-purple-500 to-pink-600 p-6 text-center text-white">
+                            {/* Decorative Elements */}
+                            <div className="absolute inset-0 opacity-10">
+                              <div className="absolute top-3 left-3 w-16 h-16 border-2 border-white rounded-full"></div>
+                              <div className="absolute bottom-3 right-3 w-12 h-12 border border-white rounded-full"></div>
+                            </div>
+                            
+                            {/* Avatar */}
+                            <div className="relative mx-auto mb-4">
+                              <div className="w-20 h-20 rounded-full p-2 bg-white/20 backdrop-blur-sm mx-auto">
+                                <img 
+                                  src={creator.avatar} 
+                                  alt={creator.displayName}
+                                  className="w-full h-full rounded-full object-cover"
+                                />
+                              </div>
+                              {/* Online Status */}
+                              <div className="absolute bottom-1 right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white shadow-md"></div>
+                            </div>
+                            
+                            {/* Creator Info */}
+                            <h3 className="text-xl font-bold mb-2 truncate px-2">{creator.displayName}</h3>
+                            <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm text-white text-sm font-medium rounded-full border border-white/30 truncate max-w-full">
+                              {creator.briefStats.category}
+                            </span>
+                          </div>
+                          
+                          {/* Stats and Actions */}
+                          <div className="p-5">
+                            {/* Stats Grid */}
+                            <div className="grid grid-cols-2 gap-4 mb-5">
+                              <div className="text-center p-3 bg-purple-50 rounded-xl">
+                                <div className="flex items-center justify-center space-x-2 mb-1">
+                                  <Users className="w-4 h-4 text-purple-600" />
+                                  <span className="text-lg font-bold text-purple-600 truncate">{creator.briefStats.followers}</span>
+                                </div>
+                                <div className="text-xs text-purple-500 uppercase tracking-wide font-medium">Followers</div>
+                              </div>
+                              <div className="text-center p-3 bg-pink-50 rounded-xl">
+                                <div className="flex items-center justify-center space-x-2 mb-1">
+                                  <Camera className="w-4 h-4 text-pink-600" />
+                                  <span className="text-lg font-bold text-pink-600 truncate">{creator.briefStats.posts}</span>
+                                </div>
+                                <div className="text-xs text-pink-500 uppercase tracking-wide font-medium">Posts</div>
+                              </div>
+                            </div>
+                            
+                            {/* Action Buttons */}
+                            <div className="space-y-3">
+                              <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                                <User className="w-4 h-4 mr-2" />
+                                Follow Creator
+                              </Button>
+                              <Button variant="outline" className="w-full border-purple-200 text-purple-600 hover:bg-purple-50 font-medium py-3 rounded-xl transition-all duration-300">
+                                <MessageCircle className="w-4 h-4 mr-2" />
+                                Send Message
+                              </Button>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Navigation Arrows */}
+              <button
+                onClick={() => setCurrentCreatorSlide(prev => prev === 0 ? trendingCreators.length - 1 : prev - 1)}
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-purple-600 p-3 rounded-full shadow-xl backdrop-blur-sm transition-all duration-200 hover:scale-110 border border-purple-100"
+                aria-label="Previous creator"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              
+              <button
+                onClick={() => setCurrentCreatorSlide(prev => prev === trendingCreators.length - 1 ? 0 : prev + 1)}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-purple-600 p-3 rounded-full shadow-xl backdrop-blur-sm transition-all duration-200 hover:scale-110 border border-purple-100"
+                aria-label="Next creator"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+              
+              {/* Dots Indicator */}
+              <div className="flex justify-center space-x-3 mt-6">
+                {trendingCreators.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentCreatorSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentCreatorSlide 
+                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 w-8 shadow-lg' 
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    aria-label={`Go to creator ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
