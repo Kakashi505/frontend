@@ -50,10 +50,10 @@ const topVideos = [
 
 // Post library data
 const postLibrary = [
-  { id: '1', icon: ShoppingCart, label: '購入済み', count: 12 },
-  { id: '2', icon: Bookmark, label: '保存済み', count: 45 },
-  { id: '3', icon: Heart, label: 'いいね', count: 89 },
-  { id: '4', icon: Eye, label: '視聴履歴', count: 156 },
+  { id: '1', icon: ShoppingCart, label: 'Purchased', count: 12, description: 'Your bought content' },
+  { id: '2', icon: Bookmark, label: 'Saved', count: 45, description: 'Bookmarked posts' },
+  { id: '3', icon: Heart, label: 'Liked', count: 89, description: 'Posts you loved' },
+  { id: '4', icon: Eye, label: 'History', count: 156, description: 'Recently viewed' },
 ];
 
 // Recommended genres data
@@ -228,6 +228,7 @@ export function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentVideoSlide, setCurrentVideoSlide] = useState(0);
   const [currentCreatorSlide, setCurrentCreatorSlide] = useState(0);
+  const [currentLibrarySlide, setCurrentLibrarySlide] = useState(0);
 
   const tabs = ['All', 'Popular', 'Premium', 'Live'];
 
@@ -423,20 +424,139 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Post Library */}
-      <section className="px-4 py-12 bg-gray-50">
+      {/* Post Library Section */}
+      <section className="px-4 py-16 bg-gradient-to-br from-gray-50 via-white to-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Post Library</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Your Post Library</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Access all your favorite content, saved posts, and viewing history in one place</p>
+          </div>
+          
+          {/* Desktop: Enhanced Grid Layout */}
+          <div className="hidden md:grid md:grid-cols-4 gap-8">
             {postLibrary.map((item) => (
-              <div key={item.id} className="text-center">
-                <div className="w-16 h-16 bg-white rounded-xl mx-auto mb-3 flex items-center justify-center shadow-md">
-                  <item.icon className="w-8 h-8 text-pink-500" />
+              <div key={item.id} className="group">
+                <div className="bg-white rounded-2xl p-8 text-center hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border-0 shadow-lg">
+                  {/* Icon Container */}
+                  <div className="relative mx-auto mb-6">
+                    <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl mx-auto flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <item.icon className="w-10 h-10 text-white" />
+                    </div>
+                    {/* Floating Count Badge */}
+                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
+                      <span className="text-white text-xs font-bold">{item.count}</span>
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">
+                    {item.label}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                    {item.description}
+                  </p>
+                  
+                  {/* Action Button */}
+                  <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    View All
+                  </Button>
                 </div>
-                <div className="text-sm text-gray-700 mb-1">{item.label}</div>
-                <div className="text-lg font-bold text-gray-900">{item.count}</div>
               </div>
             ))}
+          </div>
+
+          {/* Mobile: Beautiful Slideshow */}
+          <div className="md:hidden">
+            <div className="relative">
+              {/* Slideshow Container */}
+              <div className="overflow-hidden rounded-2xl">
+                <div 
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentLibrarySlide * 100}%)` }}
+                >
+                  {postLibrary.map((item) => (
+                    <div key={item.id} className="w-full flex-shrink-0 px-3">
+                      <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+                        {/* Hero Section */}
+                        <div className="relative bg-gradient-to-br from-purple-500 to-pink-600 p-6 text-center text-white">
+                          {/* Decorative Elements */}
+                          <div className="absolute inset-0 opacity-10">
+                            <div className="absolute top-3 left-3 w-16 h-16 border-2 border-white rounded-full"></div>
+                            <div className="absolute bottom-3 right-3 w-12 h-12 border border-white rounded-full"></div>
+                          </div>
+                          
+                          {/* Icon */}
+                          <div className="relative mx-auto mb-4">
+                            <div className="w-20 h-20 rounded-full p-3 bg-white/20 backdrop-blur-sm mx-auto">
+                              <item.icon className="w-full h-full text-white" />
+                            </div>
+                            {/* Count Badge */}
+                            <div className="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
+                              <span className="text-purple-600 text-xs font-bold">{item.count}</span>
+                            </div>
+                          </div>
+                          
+                          {/* Label */}
+                          <h3 className="text-xl font-bold mb-2">{item.label}</h3>
+                          <p className="text-sm opacity-90">{item.description}</p>
+                        </div>
+                        
+                        {/* Content */}
+                        <div className="p-6">
+                          {/* Stats */}
+                          <div className="text-center mb-6">
+                            <div className="text-3xl font-bold text-gray-900 mb-2">{item.count}</div>
+                            <div className="text-sm text-gray-600">Items Available</div>
+                          </div>
+                          
+                          {/* Action Button */}
+                          <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                            Browse {item.label}
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Navigation Arrows */}
+              <button
+                onClick={() => setCurrentLibrarySlide(prev => prev === 0 ? postLibrary.length - 1 : prev - 1)}
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-purple-600 p-3 rounded-full shadow-xl backdrop-blur-sm transition-all duration-200 hover:scale-110 border border-purple-100"
+                aria-label="Previous library item"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              
+              <button
+                onClick={() => setCurrentLibrarySlide(prev => prev === postLibrary.length - 1 ? 0 : prev + 1)}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-purple-600 p-3 rounded-full shadow-xl backdrop-blur-sm transition-all duration-200 hover:scale-110 border border-purple-100"
+                aria-label="Next library item"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+              
+              {/* Dots Indicator */}
+              <div className="flex justify-center space-x-2 mt-6">
+                {postLibrary.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentLibrarySlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentLibrarySlide 
+                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 w-6 shadow-md' 
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    aria-label={`Go to library item ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

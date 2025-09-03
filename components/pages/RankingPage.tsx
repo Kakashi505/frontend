@@ -18,28 +18,28 @@ const rankingSections = [
         isNew: true,
         rank: 1,
         thumbnail: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=600',
-        duration: '1:26:22',
-        creator: 'Sakura Chan',
-        title: 'Spring Cherry Blossom Photography Session',
-        timeAgo: '15 hours ago',
+        duration: '2:00:00',
+        creator: 'Creator Name',
+        title: '【今だけ80%OFF】ハマり過ぎて毎日やりたくなっちゃう特別配信',
+        timeAgo: '2 hours ago',
         likes: 1234,
         comments: 89,
         views: '45.2K',
-        category: 'Photography'
+        category: 'Special'
       },
       {
         id: '2',
         isNew: false,
         rank: 2,
         thumbnail: 'https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=600',
-        duration: '00:45',
-        creator: 'Alex Fitness',
-        title: 'Advanced Workout Routine for Beginners',
-        timeAgo: '8 hours ago',
+        duration: '1:59:31',
+        creator: 'Creator Name',
+        title: '【限定配信】見逃し厳禁！特別な内容をお届け',
+        timeAgo: '4 hours ago',
         likes: 892,
         comments: 67,
         views: '32.1K',
-        category: 'Fitness'
+        category: 'Limited'
       },
       {
         id: '3',
@@ -47,13 +47,13 @@ const rankingSections = [
         rank: 3,
         thumbnail: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=600',
         duration: '17:34',
-        creator: 'Emma Art',
-        title: 'Digital Art Masterclass: Cyberpunk Style',
-        timeAgo: '3 months ago',
+        creator: 'Creator Name',
+        title: '【新作】待望の新コンテンツが登場',
+        timeAgo: '1 day ago',
         likes: 585,
         comments: 234,
         views: '28.9K',
-        category: 'Art'
+        category: 'New'
       },
       {
         id: '4',
@@ -61,153 +61,587 @@ const rankingSections = [
         rank: 4,
         thumbnail: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=600',
         duration: '12:34',
-        creator: 'Mike Music',
-        title: 'Acoustic Guitar Covers Collection',
-        timeAgo: '1 day ago',
+        creator: 'Creator Name',
+        title: '【人気】多くのファンに愛されるコンテンツ',
+        timeAgo: '2 days ago',
         likes: 156,
         comments: 89,
         views: '15.7K',
-        category: 'Music'
-      }
-    ]
-  },
-  {
-    id: 'butt',
-    title: 'Beauty & Fashion',
-    icon: '✨',
-    posts: [
+        category: 'Popular'
+      },
       {
         id: '5',
-        isNew: true,
-        rank: 1,
+        isNew: false,
+        rank: 5,
         thumbnail: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600',
-        duration: '2:15:30',
-        creator: 'Beauty Guru',
-        title: 'Complete Makeup Tutorial for Beginners',
-        timeAgo: '2 hours ago',
-        likes: 1256,
-        comments: 89,
-        views: '67.3K',
-        category: 'Beauty'
+        duration: '8:45',
+        creator: 'Creator Name',
+        title: '【おすすめ】見て損なしの良質コンテンツ',
+        timeAgo: '3 days ago',
+        likes: 234,
+        comments: 45,
+        views: '12.3K',
+        category: 'Recommended'
       },
       {
         id: '6',
         isNew: false,
-        rank: 2,
+        rank: 6,
         thumbnail: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600',
-        duration: '45:20',
-        creator: 'Style Master',
-        title: 'Fashion Trends 2024: What to Wear',
-        timeAgo: '6 hours ago',
-        likes: 892,
-        comments: 45,
-        views: '42.1K',
-        category: 'Fashion'
+        duration: '15:20',
+        creator: 'Creator Name',
+        title: '【定番】いつでも楽しめる安定のコンテンツ',
+        timeAgo: '1 week ago',
+        likes: 89,
+        comments: 23,
+        views: '8.7K',
+        category: 'Classic'
       }
     ]
   },
   {
     id: 'adult-services',
-    title: 'Lifestyle & Wellness',
-    icon: '🌿',
+    title: 'Adult Services Ranking',
+    icon: '💋',
     posts: [
       {
         id: '7',
         isNew: true,
         rank: 1,
         thumbnail: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600',
-        duration: '1:05:15',
-        creator: 'Wellness Coach',
-        title: 'Mindfulness Meditation Guide',
+        duration: '1:36:25',
+        creator: 'Creator Name',
+        title: '【出張】高級エステサロンでの特別な体験',
         timeAgo: '1 hour ago',
         likes: 2341,
         comments: 156,
         views: '89.2K',
-        category: 'Wellness'
+        category: 'Service'
+      },
+      {
+        id: '8',
+        isNew: false,
+        rank: 2,
+        thumbnail: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '33:20',
+        creator: 'Creator Name',
+        title: '【限定】特別なサービスをご提供',
+        timeAgo: '3 hours ago',
+        likes: 1876,
+        comments: 234,
+        views: '56.7K',
+        category: 'Limited'
+      },
+      {
+        id: '9',
+        isNew: false,
+        rank: 3,
+        thumbnail: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '45:15',
+        creator: 'Creator Name',
+        title: '【人気】多くのお客様に選ばれるサービス',
+        timeAgo: '5 hours ago',
+        likes: 1456,
+        comments: 89,
+        views: '34.2K',
+        category: 'Popular'
+      },
+      {
+        id: '10',
+        isNew: false,
+        rank: 4,
+        thumbnail: 'https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '22:30',
+        creator: 'Creator Name',
+        title: '【新作】革新的なサービス体験',
+        timeAgo: '1 day ago',
+        likes: 892,
+        comments: 67,
+        views: '23.4K',
+        category: 'New'
+      },
+      {
+        id: '11',
+        isNew: false,
+        rank: 5,
+        thumbnail: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '18:45',
+        creator: 'Creator Name',
+        title: '【定番】安心の品質をお届け',
+        timeAgo: '2 days ago',
+        likes: 567,
+        comments: 34,
+        views: '18.9K',
+        category: 'Classic'
+      },
+      {
+        id: '12',
+        isNew: false,
+        rank: 6,
+        thumbnail: 'https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '28:15',
+        creator: 'Creator Name',
+        title: '【おすすめ】特別な時間をお過ごしください',
+        timeAgo: '3 days ago',
+        likes: 345,
+        comments: 23,
+        views: '12.1K',
+        category: 'Recommended'
       }
     ]
   },
   {
     id: 'no-panties',
-    title: 'Travel & Adventure',
-    icon: '✈️',
+    title: 'No Panties Ranking',
+    icon: '👙',
     posts: [
       {
-        id: '8',
+        id: '13',
         isNew: true,
         rank: 1,
-        thumbnail: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600',
-        duration: '33:45',
-        creator: 'Travel Pro',
-        title: 'Hidden Gems in Tokyo: Local Guide',
-        timeAgo: '4 hours ago',
+        thumbnail: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '1:26:22',
+        creator: 'Creator Name',
+        title: '【ノーパン】スカートの中身が丸見え',
+        timeAgo: '2 hours ago',
         likes: 1876,
         comments: 234,
-        views: '56.7K',
-        category: 'Travel'
+        views: '67.8K',
+        category: 'Special'
+      },
+      {
+        id: '14',
+        isNew: false,
+        rank: 2,
+        thumbnail: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '00:45',
+        creator: 'Creator Name',
+        title: '【限定】見逃し厳禁の特別コンテンツ',
+        timeAgo: '4 hours ago',
+        likes: 1456,
+        comments: 89,
+        views: '45.2K',
+        category: 'Limited'
+      },
+      {
+        id: '15',
+        isNew: false,
+        rank: 3,
+        thumbnail: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '12:30',
+        creator: 'Creator Name',
+        title: '【人気】多くのファンに愛される',
+        timeAgo: '6 hours ago',
+        likes: 892,
+        comments: 67,
+        views: '32.1K',
+        category: 'Popular'
+      },
+      {
+        id: '16',
+        isNew: false,
+        rank: 4,
+        thumbnail: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '8:15',
+        creator: 'Creator Name',
+        title: '【新作】待望の新コンテンツ',
+        timeAgo: '1 day ago',
+        likes: 567,
+        comments: 34,
+        views: '18.9K',
+        category: 'New'
+      },
+      {
+        id: '17',
+        isNew: false,
+        rank: 5,
+        thumbnail: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '15:45',
+        creator: 'Creator Name',
+        title: '【定番】いつでも楽しめる',
+        timeAgo: '2 days ago',
+        likes: 345,
+        comments: 23,
+        views: '12.1K',
+        category: 'Classic'
+      },
+      {
+        id: '18',
+        isNew: false,
+        rank: 6,
+        thumbnail: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '22:30',
+        creator: 'Creator Name',
+        title: '【おすすめ】特別な体験をお届け',
+        timeAgo: '3 days ago',
+        likes: 234,
+        comments: 18,
+        views: '9.8K',
+        category: 'Recommended'
       }
     ]
   },
   {
     id: 'ntr',
-    title: 'Food & Cooking',
-    icon: '🍳',
+    title: 'NTR/Cheating Ranking',
+    icon: '💔',
     posts: [
       {
-        id: '9',
+        id: '19',
         isNew: true,
         rank: 1,
         thumbnail: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600',
         duration: '1:12:30',
-        creator: 'Chef Master',
-        title: 'Authentic Japanese Ramen Recipe',
-        timeAgo: '5 hours ago',
-        likes: 3241,
-        comments: 189,
+        creator: 'Creator Name',
+        title: '【NTR】妻の秘密が明かされる',
+        timeAgo: '3 hours ago',
+        likes: 2234,
+        comments: 156,
         views: '78.9K',
-        category: 'Cooking'
+        category: 'Special'
+      },
+      {
+        id: '20',
+        isNew: false,
+        rank: 2,
+        thumbnail: 'https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '45:20',
+        creator: 'Creator Name',
+        title: '【限定】見逃し厳禁の特別配信',
+        timeAgo: '5 hours ago',
+        likes: 1678,
+        comments: 123,
+        views: '56.7K',
+        category: 'Limited'
+      },
+      {
+        id: '21',
+        isNew: false,
+        rank: 3,
+        thumbnail: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '18:45',
+        creator: 'Creator Name',
+        title: '【人気】多くのファンに支持される',
+        timeAgo: '1 day ago',
+        likes: 1234,
+        comments: 89,
+        views: '45.2K',
+        category: 'Popular'
+      },
+      {
+        id: '22',
+        isNew: false,
+        rank: 4,
+        thumbnail: 'https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '25:30',
+        creator: 'Creator Name',
+        title: '【新作】革新的なストーリー展開',
+        timeAgo: '2 days ago',
+        likes: 789,
+        comments: 45,
+        views: '23.4K',
+        category: 'New'
+      },
+      {
+        id: '23',
+        isNew: false,
+        rank: 5,
+        thumbnail: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '12:15',
+        creator: 'Creator Name',
+        title: '【定番】安心の品質をお届け',
+        timeAgo: '3 days ago',
+        likes: 456,
+        comments: 23,
+        views: '15.6K',
+        category: 'Classic'
+      },
+      {
+        id: '24',
+        isNew: false,
+        rank: 6,
+        thumbnail: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '30:45',
+        creator: 'Creator Name',
+        title: '【おすすめ】特別な体験をお届け',
+        timeAgo: '1 week ago',
+        likes: 234,
+        comments: 18,
+        views: '8.9K',
+        category: 'Recommended'
       }
     ]
   },
   {
     id: 'spa',
-    title: 'Technology & Innovation',
-    icon: '🚀',
+    title: 'Spa Ranking',
+    icon: '💆',
     posts: [
       {
-        id: '10',
+        id: '25',
         isNew: true,
         rank: 1,
-        thumbnail: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=600',
+        thumbnail: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600',
         duration: '55:20',
-        creator: 'Tech Guru',
-        title: 'AI in 2024: What You Need to Know',
-        timeAgo: '3 hours ago',
+        creator: 'Creator Name',
+        title: '【スパ】リラクゼーション体験',
+        timeAgo: '4 hours ago',
         likes: 1456,
         comments: 89,
         views: '34.2K',
-        category: 'Technology'
+        category: 'Relaxation'
+      },
+      {
+        id: '26',
+        isNew: false,
+        rank: 2,
+        thumbnail: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '42:15',
+        creator: 'Creator Name',
+        title: '【限定】特別な癒しの時間',
+        timeAgo: '6 hours ago',
+        likes: 1234,
+        comments: 67,
+        views: '28.9K',
+        category: 'Limited'
+      },
+      {
+        id: '27',
+        isNew: false,
+        rank: 3,
+        thumbnail: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '38:30',
+        creator: 'Creator Name',
+        title: '【人気】多くのお客様に選ばれる',
+        timeAgo: '1 day ago',
+        likes: 892,
+        comments: 45,
+        views: '23.4K',
+        category: 'Limited'
+      },
+      {
+        id: '28',
+        isNew: false,
+        rank: 4,
+        thumbnail: 'https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '28:45',
+        creator: 'Creator Name',
+        title: '【新作】革新的なリラクゼーション',
+        timeAgo: '2 days ago',
+        likes: 567,
+        comments: 34,
+        views: '18.9K',
+        category: 'New'
+      },
+      {
+        id: '29',
+        isNew: false,
+        rank: 5,
+        thumbnail: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '35:20',
+        creator: 'Creator Name',
+        title: '【定番】安心の癒しをお届け',
+        timeAgo: '3 days ago',
+        likes: 345,
+        comments: 23,
+        views: '12.1K',
+        category: 'Classic'
+      },
+      {
+        id: '30',
+        isNew: false,
+        rank: 6,
+        thumbnail: 'https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '20:15',
+        creator: 'Creator Name',
+        title: '【おすすめ】特別な癒しの時間',
+        timeAgo: '1 week ago',
+        likes: 234,
+        comments: 18,
+        views: '8.9K',
+        category: 'Recommended'
       }
     ]
   },
   {
     id: 'chubby',
-    title: 'Gaming & Entertainment',
-    icon: '🎮',
+    title: 'Chubby Ranking',
+    icon: '🥰',
     posts: [
       {
-        id: '11',
+        id: '31',
         isNew: true,
         rank: 1,
-        thumbnail: 'https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=600',
+        thumbnail: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=600',
         duration: '1:08:45',
-        creator: 'Gaming Pro',
-        title: 'Top 10 Games of 2024',
+        creator: 'Creator Name',
+        title: '【ぽっちゃり】愛らしい体型の魅力',
+        timeAgo: '5 hours ago',
+        likes: 1876,
+        comments: 234,
+        views: '67.8K',
+        category: 'Charm'
+      },
+      {
+        id: '32',
+        isNew: false,
+        rank: 2,
+        thumbnail: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '52:30',
+        creator: 'Creator Name',
+        title: '【限定】特別な魅力をお届け',
         timeAgo: '7 hours ago',
+        likes: 1456,
+        comments: 89,
+        views: '45.2K',
+        category: 'Limited'
+      },
+      {
+        id: '33',
+        isNew: false,
+        rank: 3,
+        thumbnail: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '48:15',
+        creator: 'Creator Name',
+        title: '【人気】多くのファンに愛される',
+        timeAgo: '1 day ago',
+        likes: 1234,
+        comments: 67,
+        views: '32.1K',
+        category: 'Popular'
+      },
+      {
+        id: '34',
+        isNew: false,
+        rank: 4,
+        thumbnail: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '35:20',
+        creator: 'Creator Name',
+        title: '【新作】革新的な魅力の表現',
+        timeAgo: '2 days ago',
+        likes: 789,
+        comments: 45,
+        views: '23.4K',
+        category: 'New'
+      },
+      {
+        id: '35',
+        isNew: false,
+        rank: 5,
+        thumbnail: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '42:45',
+        creator: 'Creator Name',
+        title: '【定番】安心の魅力をお届け',
+        timeAgo: '3 days ago',
+        likes: 456,
+        comments: 23,
+        views: '15.6K',
+        category: 'Classic'
+      },
+      {
+        id: '36',
+        isNew: false,
+        rank: 6,
+        thumbnail: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '28:30',
+        creator: 'Creator Name',
+        title: '【おすすめ】特別な魅力の体験',
+        timeAgo: '1 week ago',
+        likes: 234,
+        comments: 18,
+        views: '8.9K',
+        category: 'Recommended'
+      }
+    ]
+  },
+  {
+    id: 'butt',
+    title: 'Butt Ranking',
+    icon: '🍑',
+    posts: [
+      {
+        id: '37',
+        isNew: true,
+        rank: 1,
+        thumbnail: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '2:15:30',
+        creator: 'Creator Name',
+        title: '【美尻】完璧な形の魅力',
+        timeAgo: '3 hours ago',
         likes: 2234,
         comments: 156,
-        views: '67.8K',
-        category: 'Gaming'
+        views: '78.9K',
+        category: 'Beauty'
+      },
+      {
+        id: '38',
+        isNew: false,
+        rank: 2,
+        thumbnail: 'https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '45:20',
+        creator: 'Creator Name',
+        title: '【限定】特別な魅力をお届け',
+        timeAgo: '5 hours ago',
+        likes: 1678,
+        comments: 123,
+        views: '56.7K',
+        category: 'Limited'
+      },
+      {
+        id: '39',
+        isNew: false,
+        rank: 3,
+        thumbnail: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '38:45',
+        creator: 'Creator Name',
+        title: '【人気】多くのファンに支持される',
+        timeAgo: '1 day ago',
+        likes: 1234,
+        comments: 89,
+        views: '45.2K',
+        category: 'Popular'
+      },
+      {
+        id: '40',
+        isNew: false,
+        rank: 4,
+        thumbnail: 'https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '25:30',
+        creator: 'Creator Name',
+        title: '【新作】革新的な魅力の表現',
+        timeAgo: '2 days ago',
+        likes: 789,
+        comments: 45,
+        views: '23.4K',
+        category: 'New'
+      },
+      {
+        id: '41',
+        isNew: false,
+        rank: 5,
+        thumbnail: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '32:15',
+        creator: 'Creator Name',
+        title: '【定番】安心の魅力をお届け',
+        timeAgo: '3 days ago',
+        likes: 456,
+        comments: 23,
+        views: '15.6K',
+        category: 'Classic'
+      },
+      {
+        id: '42',
+        isNew: false,
+        rank: 6,
+        thumbnail: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=600',
+        duration: '28:30',
+        creator: 'Creator Name',
+        title: '【おすすめ】特別な魅力の体験',
+        timeAgo: '1 week ago',
+        likes: 234,
+        comments: 18,
+        views: '8.9K',
+        category: 'Recommended'
       }
     ]
   }
@@ -595,18 +1029,7 @@ export function RankingPage() {
         </div>
       </div>
 
-      {/* Floating Buttons */}
-      {/* <div className="fixed right-4 top-1/2 -translate-y-1/2 space-y-2 z-50">
-        <button className="w-10 h-10 bg-gray-800 text-white rounded-full flex items-center justify-center text-xs font-medium hover:bg-gray-700 transition-colors">
-          Copy
-        </button>
-        <button className="w-10 h-10 bg-gray-800 text-white rounded-full flex items-center justify-center text-xs font-medium hover:bg-gray-700 transition-colors">
-          Capture
-        </button>
-        <button className="w-10 h-10 bg-gray-800 text-white rounded-full flex items-center justify-center text-xs font-medium hover:bg-gray-700 transition-colors">
-          AIOCR
-        </button>
-      </div> */}
+    
     </div>
   );
 }
