@@ -19,7 +19,7 @@ import {
   AlertTriangle
 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
-import { useLocale } from '@/components/providers/LocaleProvider';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -29,7 +29,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 
 export function AccountPage() {
   const { user, logout } = useAuth();
-  const { t, locale, setLocale } = useLocale();
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [messageRejectionEnabled, setMessageRejectionEnabled] = useState(false);
 
@@ -75,9 +74,7 @@ export function AccountPage() {
     logout();
   };
 
-  const handleLanguageChange = (newLocale: 'en' | 'ja') => {
-    setLocale(newLocale);
-  };
+
 
   return (
     <div className="max-w-2xl mx-auto space-y-6 p-4">
@@ -138,7 +135,7 @@ export function AccountPage() {
                 <span className="text-gray-900">Language Settings</span>
               </div>
               <div className="flex items-center space-x-2">
-                <span className="text-sm text-gray-500">{locale === 'ja' ? '日本語' : 'English'}</span>
+                <span className="text-sm text-gray-500">English</span>
                 <ChevronRight className="w-4 h-4 text-gray-400" />
               </div>
             </div>
@@ -289,15 +286,9 @@ export function AccountPage() {
           <div className="space-y-4">
             <div className="space-y-2">
               <label className="text-sm font-medium">Select Language</label>
-              <Select value={locale} onValueChange={handleLanguageChange}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select language" />
-                </SelectTrigger>
-                                 <SelectContent>
-                   <SelectItem value="en">English</SelectItem>
-                   <SelectItem value="ja">日本語</SelectItem>
-                 </SelectContent>
-              </Select>
+              <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-700">
+                English
+              </div>
             </div>
           </div>
         </DialogContent>

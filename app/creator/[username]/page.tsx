@@ -1,9 +1,13 @@
-
+import { MainLayout } from '@/components/layout/MainLayout';
 import { CreatorProfilePage } from '@/components/pages/CreatorProfilePage';
 
 export default async function CreatorProfile({ params }: { params: Promise<{ username: string }> }) {
   const { username } = await params;
-  return <CreatorProfilePage username={username} />;
+  return (
+    <MainLayout>
+      <CreatorProfilePage username={username} />
+    </MainLayout>
+  );
 }
 
 export async function generateStaticParams() {

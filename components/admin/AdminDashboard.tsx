@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { useI18n } from '@/contexts/I18nContext';
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
@@ -24,7 +24,6 @@ import { ReportsView } from './ReportsView';
 
 export function AdminDashboard() {
   const { user } = useAuth();
-  const { t } = useI18n();
   const [activeTab, setActiveTab] = useState('overview');
 
   // Enhanced admin stats with OnlyU.jp features
@@ -53,7 +52,7 @@ export function AdminDashboard() {
           <CardContent className="p-6 text-center">
             <Shield className="w-12 h-12 text-red-500 mx-auto mb-4" />
             <h2 className="text-xl font-semibold mb-2">Access Denied</h2>
-            <p className="text-gray-600">You don't have permission to access the admin dashboard.</p>
+            <p className="text-gray-600">You don&apos;t have permission to access the admin dashboard.</p>
           </CardContent>
         </Card>
       </div>

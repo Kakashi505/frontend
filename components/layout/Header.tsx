@@ -3,17 +3,14 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Search, Bell, Globe, Heart } from 'lucide-react';
-import { useLocale } from '@/components/providers/LocaleProvider';
 import { useNotifications } from '@/contexts/NotificationContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { NotificationDropdown } from '@/components/notifications/NotificationDropdown';
-import { AppRouterLanguageSwitcher } from '@/components/ui/AppRouterLanguageSwitcher';
 
 export function Header() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showNotifications, setShowNotifications] = useState(false);
-  const { t } = useLocale();
   const { unreadCount } = useNotifications();
 
   return (
@@ -21,12 +18,10 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <Image
-            src="/assets/logo.png"
-            alt={t('home', 'navbar')}
-            width={128}
-            height={64}
-            className="w-32 h-16 object-contain"
+          <img
+            src="/logo.png"
+            alt="OnlyU"
+            className="h-12 w-auto object-contain"
           />
         </div>
 
@@ -36,7 +31,7 @@ export function Header() {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
             <Input
               type="text"
-              placeholder={t('search_placeholder', 'navbar')}
+              placeholder="Search creators..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10 bg-gray-50/50 border-gray-200 focus:border-purple-300 focus:ring-purple-200"
@@ -46,8 +41,6 @@ export function Header() {
 
         {/* Right Section */}
         <div className="flex items-center space-x-4">
-          <AppRouterLanguageSwitcher />
-          
           <div className="relative">
             <Button
               variant="ghost"

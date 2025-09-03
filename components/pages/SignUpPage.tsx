@@ -483,7 +483,7 @@ export function SignUpPage() {
                         maxLength={6}
                       />
                       <p className="text-xs text-gray-500 mt-1">
-                        We've sent a verification code to your phone number
+                        We&apos;ve sent a verification code to your phone number
                       </p>
                     </div>
                   )}
