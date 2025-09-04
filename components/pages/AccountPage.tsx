@@ -38,7 +38,10 @@ export function AccountPage() {
     return (
       <div className="text-center py-12">
         <h1 className="text-2xl font-bold text-gray-900 mb-4">Please log in to view your account</h1>
-        <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
+        <Button 
+          className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+          onClick={() => router.push('/login')}
+        >
           Login
         </Button>
       </div>
@@ -210,6 +213,33 @@ export function AccountPage() {
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-sm text-gray-500">{blockList.length}</span>
+                <ChevronRight className="w-4 h-4 text-gray-400" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Creator Registration Section */}
+      <div className="space-y-4">
+        <div className="flex items-center space-x-2">
+          <Users className="w-5 h-5 text-gray-600" />
+          <h2 className="text-lg font-semibold text-gray-900">Creator Registration</h2>
+        </div>
+        
+        <Card>
+          <CardContent className="p-0">
+            <div className="space-y-0">
+              <div 
+                className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors cursor-pointer"
+                onClick={() => router.push('/register-creator')}
+              >
+                <div className="flex items-center space-x-3">
+                  <span className="text-gray-900">Register as a Creator</span>
+                  <Badge variant="secondary" className="bg-blue-100 text-blue-700 text-xs">
+                    New
+                  </Badge>
+                </div>
                 <ChevronRight className="w-4 h-4 text-gray-400" />
               </div>
             </div>

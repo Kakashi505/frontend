@@ -293,6 +293,10 @@ export function HomePage() {
     router.push('/explore');
   };
 
+  const handleBecomeCreator = () => {
+    router.push('/register-creator');
+  };
+
   return (
     <>
       <style jsx>{heroStyles}</style>
@@ -344,6 +348,7 @@ export function HomePage() {
               <Button 
                 size="lg" 
                 className="bg-transparent text-white border-2 border-white/50 hover:bg-white/10 hover:border-white px-8 py-3 text-lg font-semibold cursor-pointer shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-200 rounded-xl backdrop-blur-sm"
+                onClick={handleBecomeCreator}
               >
                 Become Creator
               </Button>
