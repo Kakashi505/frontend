@@ -234,11 +234,17 @@ export function AccountPage() {
                 <span className="text-gray-900">Terms of Use</span>
                 <ChevronRight className="w-4 h-4 text-gray-400" />
               </div>
-              <div className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors cursor-pointer border-b border-gray-100">
+              <div 
+                className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors cursor-pointer border-b border-gray-100"
+                onClick={() => router.push('/privacy')}
+              >
                 <span className="text-gray-900">Privacy Policy</span>
                 <ChevronRight className="w-4 h-4 text-gray-400" />
               </div>
-              <div className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors cursor-pointer border-b border-gray-100">
+              <div 
+                className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors cursor-pointer border-b border-gray-100"
+                onClick={() => router.push('/legal')}
+              >
                 <span className="text-gray-900">Legal Notice</span>
                 <ChevronRight className="w-4 h-4 text-gray-400" />
               </div>
